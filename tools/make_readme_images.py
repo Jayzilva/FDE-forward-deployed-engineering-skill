@@ -5,7 +5,7 @@ Run from anywhere:  python tools/make_readme_images.py
 import math, pathlib, random
 from xml.sax.saxutils import escape
 
-OUT = pathlib.Path(r"D:\FDE\FDE-forward-deployed-engineering-skill\docs\images")
+OUT = pathlib.Path(__file__).resolve().parent.parent / "docs" / "images"
 INK, PAPER = "#111111", "#F3EEE3"
 Y, PK, BL, LM, OR, MT, LV, WH = "#FFD23F", "#FF5DA2", "#3D5AFE", "#B5F23D", "#FF7A1A", "#7EE0C3", "#B69CFF", "#FFFFFF"
 H = "Arial Black, Arial, Helvetica, sans-serif"
