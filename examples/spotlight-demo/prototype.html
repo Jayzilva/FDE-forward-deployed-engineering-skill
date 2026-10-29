@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acme Field Service — prototype v2</title>
+<style>
+:root{--bg:#f3f5f8;--card:#fff;--ink:#17212c;--muted:#5d6874;--line:#e2e6eb;--brand:#0f766e;--brand-soft:#dff3ef;--warn:#9a5b00;--warn-soft:#fdf0d8;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#10161d;--card:#18212b;--ink:#e6ecf1;--muted:#a0acb8;--line:#2a3541;--brand:#5fd0c2;--brand-soft:#173a36;--warn:#f0b75a;--warn-soft:#3a2d14;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}
+nav{background:var(--card);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+nav b{font-size:17px;margin:0 8px 14px}nav a{padding:9px 12px;border-radius:9px;color:var(--muted);text-decoration:none;font-weight:600}
+nav a.on{background:var(--brand-soft);color:var(--brand)}
+main{padding:28px 32px;min-width:0}section{display:none}section.on{display:block}
+h1{margin:0 0 4px;font-size:26px}.lede{color:var(--muted);margin:0 0 22px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.tile,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tile .k{color:var(--muted);font-size:13px;font-weight:600}.tile .v{font-size:28px;font-weight:700;margin-top:4px}
+.chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--brand-soft);color:var(--brand)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.row{display:flex;gap:16px;flex-wrap:wrap}.row>.card{flex:1;min-width:260px}
+.btn{border:0;border-radius:10px;padding:9px 16px;font:inherit;font-weight:600;background:var(--brand);color:#fff}
+@media (max-width:760px){.app{grid-template-columns:1fr}nav{flex-direction:row;overflow-x:auto}nav b{display:none}.tiles{grid-template-columns:1fr}main{padding:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav><b>Acme Field Service</b><a href="#overview">Overview</a><a href="#jobs">Jobs</a><a href="#billing">Billing</a></nav>
+  <main>
+    <section id="overview">
+      <h1>Good morning, Dana</h1><p class="lede">42 jobs today across 3 regions. 2 need a decision. All data is sample data.</p>
+      <div class="tiles" data-tour="kpis">
+        <div class="tile"><div class="k">First-time fix rate</div><div class="v">87%</div><span class="chip">+4 pts vs last month</span></div>
+        <div class="tile"><div class="k">Jobs at risk of SLA breach</div><div class="v">3</div><span class="chip warn">Needs a decision</span></div>
+        <div class="tile"><div class="k">Ready to invoice</div><div class="v">$18,420</div><span class="chip">9 jobs</span></div>
+      </div>
+      <div class="card" data-tour="assistant"><b>Dispatch assistant</b><p class="lede" style="margin:6px 0 12px">Suggests the nearest qualified technician for each new job. A dispatcher accepts or changes it.</p><button class="btn">Review 4 suggestions</button></div>
+    </section>
+    <section id="jobs">
+      <h1>Jobs</h1><p class="lede">Today, all regions.</p>
+      <div class="card" data-tour="jobs"><table><thead><tr><th>Job</th><th>Site</th><th>Technician</th><th>Status</th></tr></thead><tbody>
+        <tr><td>J-2041 Boiler service</td><td>Harbour Rd</td><td>Sam K.</td><td><span class="chip">On site</span></td></tr>
+        <tr><td>J-2042 HVAC fault</td><td>Mill St</td><td>Suggested: Lee P.</td><td><span class="chip warn">Awaiting dispatcher</span></td></tr>
+        <tr><td>J-2043 Annual check</td><td>Park Ave</td><td>Ana R.</td><td><span class="chip">Travelling</span></td></tr>
+      </tbody></table></div>
+    </section>
+    <section id="billing">
+      <h1>Billing</h1><p class="lede">Drafts from completed jobs this week.</p>
+      <div class="row">
+        <div class="card" data-tour="drafts"><b>Invoice drafts</b><table><tbody><tr><td>Northgate Clinic</td><td>$6,210</td><td><span class="chip">Ready</span></td></tr><tr><td>Bayview School</td><td>$4,980</td><td><span class="chip warn">Parts not priced</span></td></tr></tbody></table></div>
+        <div class="card" data-tour="portal"><b>Customer view</b><p class="lede" style="margin:6px 0 0">Customers see job reports, photos and invoices, and sign off completed work.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+function show(){var id=location.hash.slice(1)||'overview';document.querySelectorAll('section').forEach(function(s){s.classList.toggle('on',s.id===id)});document.querySelectorAll('nav a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})}
+addEventListener('hashchange',show);show();
+</script>
+</body>
+</html>

@@ -59,6 +59,12 @@ with tempfile.TemporaryDirectory() as tmp:
     check(r.returncode == 0, "qualify.py failed: " + r.stderr)
     r = run(sys.executable, str(SKILL / "scripts" / "build_tour.py"), "--example")
     check(r.returncode == 0 and json.loads(r.stdout)["screens"], "build_tour.py --example failed")
+    page = pathlib.Path(tmp) / "p.html"; page.write_text("<html><head></head><body><div data-tour='a'>x</div></body></html>")
+    steps = pathlib.Path(tmp) / "s.json"; steps.write_text(json.dumps({"title": "T", "steps": [{"target": "[data-tour='a']", "title": "A", "body": "B"}]}))
+    r = run(sys.executable, str(SKILL / "scripts" / "add_spotlight.py"), str(page), str(steps), "--out", str(pathlib.Path(tmp) / "o.html"))
+    out_html = (pathlib.Path(tmp) / "o.html").read_text(encoding="utf-8") if r.returncode == 0 else ""
+    inline = out_html.split('<script>')[-1] if out_html else ""
+    check(r.returncode == 0 and 'id="fde-tour"' in out_html and inline.count("</script") == 1, "add_spotlight.py output is broken: " + r.stderr)
     r = run(sys.executable, str(SKILL / "scripts" / "ste_lint.py"), str(SKILL / "assets" / "templates" / "handoff-runbook.md"))
     check(r.returncode == 0, "handoff-runbook template has hard STE violations:\n" + r.stdout[-800:])
 

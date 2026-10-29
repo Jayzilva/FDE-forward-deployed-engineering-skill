@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" role="img" aria-labelledby="t d">
+  <title id="t">Forward Deployed Engineering skill and Claude Code plugin</title>
+  <desc id="d">Classify any engagement on six axes, then produce the right artifact, from discovery to prototype tour to handoff.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14213D"/><stop offset="1" stop-color="#1F3B73"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity=".06"/></pattern>
+  </defs>
+  <rect width="1200" height="380" rx="24" fill="url(#g)"/>
+  <rect width="1200" height="380" rx="24" fill="url(#grid)"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="64" y="88" fill="#F5C542" font-size="18" font-weight="700" letter-spacing="4">CLAUDE CODE PLUGIN · AGENT SKILL · MIT</text>
+    <text x="64" y="160" fill="#FFFFFF" font-size="58" font-weight="800">Forward Deployed</text>
+    <text x="64" y="226" fill="#FFFFFF" font-size="58" font-weight="800">Engineering</text>
+    <text x="64" y="276" fill="#C9D6F2" font-size="22">Classify the engagement. Produce the right artifact.</text>
+    <text x="64" y="306" fill="#C9D6F2" font-size="22">From discovery to prototype tour to handoff.</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="700">
+    <g transform="translate(760 70)">
+      <rect width="176" height="52" rx="14" fill="#2B59C3"/><text x="88" y="32" fill="#fff" text-anchor="middle">Phase</text>
+      <rect x="196" width="176" height="52" rx="14" fill="#0F766E"/><text x="284" y="32" fill="#fff" text-anchor="middle">Environment</text>
+      <rect y="72" width="176" height="52" rx="14" fill="#7C3AED"/><text x="88" y="104" fill="#fff" text-anchor="middle">Product</text>
+      <rect x="196" y="72" width="176" height="52" rx="14" fill="#B45309"/><text x="284" y="104" fill="#fff" text-anchor="middle">Engagement</text>
+      <rect y="144" width="176" height="52" rx="14" fill="#BE185D"/><text x="88" y="176" fill="#fff" text-anchor="middle">Starting point</text>
+      <rect x="196" y="144" width="176" height="52" rx="14" fill="#0369A1"/><text x="284" y="176" fill="#fff" text-anchor="middle">Delivery style</text>
+      <text x="186" y="240" fill="#F5C542" text-anchor="middle" font-size="15" letter-spacing="2">SIX AXES · SIX PHASES · 20 TEMPLATES</text>
+    </g>
+  </g>
+</svg>

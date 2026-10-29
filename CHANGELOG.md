@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 — 2026-10-29
+
+- In-product spotlight tours: `scripts/add_spotlight.py` with `assets/spotlight/` adds a step-by-step guided tour to any HTML prototype. Each stop switches screen, highlights one feature, explains it and takes a viewer note. Notes copy back at the end. Output is one self-contained, offline-safe file.
+- Sharing guidance by audience (organisation artifact, public link, offline HTML file, regulated channel) and a feedback loop that turns notes into requirement changes.
+- New command `/fde:spotlight`. Example: `examples/spotlight-demo/`.
+- README rewritten with infographics, FAQ and key facts. Added `llms.txt` and `CITATION.cff`.
+
 ## 1.1.1 — 2026-10-29
 
 - Evaluation pack lists supporting artifacts in reading order and puts the decisions needed at the top.

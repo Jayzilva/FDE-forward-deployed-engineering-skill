@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="t d">
+  <title id="t">The six axes the skill classifies before it acts</title>
+  <desc id="d">Phase, environment, product, engagement model, starting point and delivery style, each with its values, around the FDE skill.</desc>
+  <rect width="1200" height="560" rx="24" fill="#F6F8FB"/>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="600" y="54" text-anchor="middle" fill="#16202B" font-size="26" font-weight="800">Classify first, then act</text>
+    <text x="600" y="84" text-anchor="middle" fill="#56606C" font-size="16">The skill infers each axis from the request and the repo, states its assumptions, then loads only the playbook that fits.</text>
+    <g stroke="#C9D2DE" stroke-width="2" fill="none">
+      <path d="M600 310 L330 190"/><path d="M600 310 L870 190"/><path d="M600 310 L330 430"/><path d="M600 310 L870 430"/><path d="M600 310 L190 310"/><path d="M600 310 L1010 310"/>
+    </g>
+    <circle cx="600" cy="310" r="78" fill="#14213D"/>
+    <text x="600" y="303" text-anchor="middle" fill="#fff" font-size="20" font-weight="800">FDE</text>
+    <text x="600" y="327" text-anchor="middle" fill="#F5C542" font-size="14" font-weight="700">router skill</text>
+    <g font-size="14">
+      <g transform="translate(200 130)"><rect width="260" height="104" rx="16" fill="#fff" stroke="#2B59C3" stroke-width="2"/><text x="20" y="34" fill="#2B59C3" font-size="17" font-weight="800">Phase</text><text x="20" y="60" fill="#16202B">discover · scope · prototype</text><text x="20" y="82" fill="#16202B">build · validate · handoff</text></g>
+      <g transform="translate(740 130)"><rect width="260" height="104" rx="16" fill="#fff" stroke="#0F766E" stroke-width="2"/><text x="20" y="34" fill="#0F766E" font-size="17" font-weight="800">Environment</text><text x="20" y="60" fill="#16202B">cloud · regulated</text><text x="20" y="82" fill="#16202B">on-prem · air-gapped</text></g>
+      <g transform="translate(40 258)"><rect width="260" height="104" rx="16" fill="#fff" stroke="#7C3AED" stroke-width="2"/><text x="20" y="34" fill="#7C3AED" font-size="17" font-weight="800">Product</text><text x="20" y="60" fill="#16202B">ai-agent · claude-code · data</text><text x="20" y="82" fill="#16202B">api-integration · business-app</text></g>
+      <g transform="translate(900 258)"><rect width="260" height="104" rx="16" fill="#fff" stroke="#B45309" stroke-width="2"/><text x="20" y="34" fill="#B45309" font-size="17" font-weight="800">Engagement model</text><text x="20" y="60" fill="#16202B">external · internal</text><text x="20" y="82" fill="#16202B">programme · partner</text></g>
+      <g transform="translate(200 386)"><rect width="260" height="104" rx="16" fill="#fff" stroke="#BE185D" stroke-width="2"/><text x="20" y="34" fill="#BE185D" font-size="17" font-weight="800">Starting point</text><text x="20" y="60" fill="#16202B">greenfield · prototype-exists</text><text x="20" y="82" fill="#16202B">legacy-replace · rescue · scale-out</text></g>
+      <g transform="translate(740 386)"><rect width="260" height="104" rx="16" fill="#fff" stroke="#0369A1" stroke-width="2"/><text x="20" y="34" fill="#0369A1" font-size="17" font-weight="800">Delivery style</text><text x="20" y="60" fill="#16202B">classic (tickets)</text><text x="20" y="82" fill="#16202B">spec-driven (spec, verify)</text></g>
+    </g>
+    <text x="600" y="530" text-anchor="middle" fill="#56606C" font-size="14">Example: "internal / legacy-replace / spec-driven" pulls a migration ADR and a parity gate into week one.</text>
+  </g>
+</svg>

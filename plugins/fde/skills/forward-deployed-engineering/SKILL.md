@@ -69,7 +69,7 @@ FDE value is visible only through artifacts the client can act on. Default to pr
 |---|---|
 | Discover | `site-survey.md`, `discovery-questions.md`, `ecosystem-map.md`, `competitor-profile.md` (one per vendor) |
 | Scope | `delta-map.md`, `use-case-scorecard.md`, `gap-matrix.md`, `requirements.md`, `outcome-card.md`, `adr.md`, `executive-brief.md` (proposal for a sponsor) |
-| Prototype | `mock-scope.md`, the prototype as a separate version, a guided tour (`scripts/build_tour.py`) |
+| Prototype | `mock-scope.md`, the prototype as a separate version, an in-product spotlight tour (`scripts/add_spotlight.py`), a guided tour document (`scripts/build_tour.py`) |
 | Build | `adr.md`, `risk-register.md` |
 | Validate | `pilot-plan.md`, `roi-scorecard.md`, `weekly-exec-status.md`, `demo-checklist.md`, `evaluation-pack.md` (programme gate or stakeholder review) |
 | Handoff | `handoff-runbook.md`, `champion-plan.md` |
@@ -85,6 +85,7 @@ Use scripts for anything numeric or repeatable:
 | `scripts/roi_calc.py` | Conservative and measured ROI. Refuses to run without a baseline |
 | `scripts/capture_screens.py` | Screenshot every screen of a prototype and record control positions (needs Playwright) |
 | `scripts/build_tour.py` | Turn captures plus a `tour.json` into a guided tour page: each screen, each control, the gaps |
+| `scripts/add_spotlight.py` | Add a step-by-step spotlight tour with per-stop notes to any HTML prototype. Output is one offline-safe file |
 | `scripts/ste_lint.py` | Lint runbooks, CLAUDE.md and acceptance criteria for STE structural rules |
 
 If the user wants a file, write it (Markdown by default, HTML for tours and prototypes). If they asked a question, answer in chat and offer the artifact.
@@ -110,7 +111,7 @@ Update `.fde/engagement.yaml` when the user confirms a decision, a risk, a gate 
 - **Ask who owns Day 2 in week one.** No internal owner means the deployment dies when the FDE leaves.
 - **Prefer structural gain over marginal gain.** "The unit of work changed" beats "the same task, faster" at a readout.
 - **Capture the baseline before Day 1.** Without it there is no ROI denominator.
-- **Show, then build.** A clickable prototype on consistent fictional data finds wrong requirements in days.
+- **Show, then build.** A clickable prototype on consistent fictional data finds wrong requirements in days. A spotlight tour inside it shows the client exactly what is new and brings their notes back.
 - **Replace legacy domain by domain.** Keep what the old system does well. Move a domain only after its parity gate.
 - **Track the change, not the ticket.** Done means released and adopted: the old way is switched off.
 - **Evidence over explanation.** A gate item passes when an artifact exists and someone else signs it.

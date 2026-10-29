@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" role="img" aria-labelledby="t d">
+  <title id="t">The prototype feedback loop with a spotlight tour</title>
+  <desc id="d">Build the prototype version, add a spotlight tour, share it through the channel that fits the audience, collect notes, turn them into requirement changes, then ship the next version.</desc>
+  <rect width="1200" height="470" rx="24" fill="#F6F8FB"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C97A5"/></marker></defs>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="40" y="52" fill="#16202B" font-size="24" font-weight="800">Show the client what you will build, and bring their notes back</text>
+    <text x="40" y="80" fill="#56606C" font-size="15">add_spotlight.py turns any HTML prototype into a step-by-step tour. Each stop highlights one new feature and takes a note.</text>
+    <g stroke="#8C97A5" stroke-width="2" fill="none" marker-end="url(#a)">
+      <path d="M250 175H292"/><path d="M500 175H542"/><path d="M750 175H792"/><path d="M896 238V300"/><path d="M792 360H750"/><path d="M542 360H500"/><path d="M292 360H250"/><path d="M146 300V230"/>
+    </g>
+    <g font-size="14">
+      <g transform="translate(42 120)"><rect width="208" height="110" rx="16" fill="#fff" stroke="#D5DCE5"/><text x="18" y="36" fill="#2B59C3" font-size="12" font-weight="700" letter-spacing="1.5">1 BUILD vN</text><text x="18" y="62" fill="#16202B" font-weight="700">Prototype, new version</text><text x="18" y="86" fill="#56606C">Sample data, "New" badges</text></g>
+      <g transform="translate(292 120)"><rect width="208" height="110" rx="16" fill="#FFF8E6" stroke="#F5C542" stroke-width="2"/><text x="18" y="36" fill="#B45309" font-size="12" font-weight="700" letter-spacing="1.5">2 SPOTLIGHT</text><text x="18" y="62" fill="#16202B" font-weight="700">One stop per feature</text><text x="18" y="86" fill="#56606C">data-tour targets, steps.json</text></g>
+      <g transform="translate(542 120)"><rect width="208" height="110" rx="16" fill="#fff" stroke="#D5DCE5"/><text x="18" y="36" fill="#0F766E" font-size="12" font-weight="700" letter-spacing="1.5">3 CHECK</text><text x="18" y="62" fill="#16202B" font-weight="700">Walk every stop</text><text x="18" y="86" fill="#56606C">Desktop, phone, light, dark</text></g>
+      <g transform="translate(792 112)"><rect width="368" height="126" rx="16" fill="#14213D"/><text x="18" y="36" fill="#F5C542" font-size="12" font-weight="700" letter-spacing="1.5">4 SHARE BY AUDIENCE</text><text x="18" y="62" fill="#fff">In your org: Claude artifact, org sharing</text><text x="18" y="85" fill="#fff">Outside, links allowed: public artifact link</text><text x="18" y="108" fill="#C9D6F2">Outside or regulated: one offline HTML file</text></g>
+      <g transform="translate(792 300)"><rect width="208" height="120" rx="16" fill="#fff" stroke="#D5DCE5"/><text x="18" y="36" fill="#BE185D" font-size="12" font-weight="700" letter-spacing="1.5">5 NOTES</text><text x="18" y="62" fill="#16202B" font-weight="700">Client leaves notes</text><text x="18" y="86" fill="#56606C">"Copy my notes" or</text><text x="18" y="106" fill="#56606C">artifact comments</text></g>
+      <g transform="translate(542 300)"><rect width="208" height="120" rx="16" fill="#fff" stroke="#D5DCE5"/><text x="18" y="36" fill="#7C3AED" font-size="12" font-weight="700" letter-spacing="1.5">6 TRIAGE</text><text x="18" y="62" fill="#16202B" font-weight="700">Each note becomes</text><text x="18" y="86" fill="#56606C">confirms · change</text><text x="18" y="106" fill="#56606C">new requirement · out</text></g>
+      <g transform="translate(292 300)"><rect width="208" height="120" rx="16" fill="#fff" stroke="#D5DCE5"/><text x="18" y="36" fill="#0369A1" font-size="12" font-weight="700" letter-spacing="1.5">7 REQUIREMENTS</text><text x="18" y="62" fill="#16202B" font-weight="700">Update the IDs</text><text x="18" y="86" fill="#56606C">Trace to the next</text><text x="18" y="106" fill="#56606C">spec change</text></g>
+      <g transform="translate(42 300)"><rect width="208" height="120" rx="16" fill="#fff" stroke="#D5DCE5"/><text x="18" y="36" fill="#2B59C3" font-size="12" font-weight="700" letter-spacing="1.5">8 SEND vN+1</text><text x="18" y="62" fill="#16202B" font-weight="700">"What changed because</text><text x="18" y="86" fill="#16202B" font-weight="700">of your notes"</text><text x="18" y="106" fill="#56606C">Loop until confirmed</text></g>
+    </g>
+  </g>
+</svg>

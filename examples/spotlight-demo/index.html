@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acme Field Service — prototype v2</title>
+<style>
+:root{--bg:#f3f5f8;--card:#fff;--ink:#17212c;--muted:#5d6874;--line:#e2e6eb;--brand:#0f766e;--brand-soft:#dff3ef;--warn:#9a5b00;--warn-soft:#fdf0d8;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#10161d;--card:#18212b;--ink:#e6ecf1;--muted:#a0acb8;--line:#2a3541;--brand:#5fd0c2;--brand-soft:#173a36;--warn:#f0b75a;--warn-soft:#3a2d14;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}
+nav{background:var(--card);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+nav b{font-size:17px;margin:0 8px 14px}nav a{padding:9px 12px;border-radius:9px;color:var(--muted);text-decoration:none;font-weight:600}
+nav a.on{background:var(--brand-soft);color:var(--brand)}
+main{padding:28px 32px;min-width:0}section{display:none}section.on{display:block}
+h1{margin:0 0 4px;font-size:26px}.lede{color:var(--muted);margin:0 0 22px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.tile,.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tile .k{color:var(--muted);font-size:13px;font-weight:600}.tile .v{font-size:28px;font-weight:700;margin-top:4px}
+.chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--brand-soft);color:var(--brand)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.row{display:flex;gap:16px;flex-wrap:wrap}.row>.card{flex:1;min-width:260px}
+.btn{border:0;border-radius:10px;padding:9px 16px;font:inherit;font-weight:600;background:var(--brand);color:#fff}
+@media (max-width:760px){.app{grid-template-columns:1fr}nav{flex-direction:row;overflow-x:auto}nav b{display:none}.tiles{grid-template-columns:1fr}main{padding:18px}}
+</style>
+<style id="fde-tour-style">
+/* FDE spotlight tour. Override the --fdt-* tokens to match the prototype's brand. */
+:root{--fdt-card:#ffffff;--fdt-ink:#16202b;--fdt-muted:#56606c;--fdt-line:#dfe3e8;--fdt-accent:#2b59c3;--fdt-accent-ink:#ffffff;--fdt-ring:#f5c542;--fdt-dim:rgba(12,16,28,.62);--fdt-tag:#e3f3ea;--fdt-tag-ink:#17663f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--fdt-card:#1b222c;--fdt-ink:#e8edf2;--fdt-muted:#a3aebb;--fdt-line:#2f3a46;--fdt-accent:#8fb0f2;--fdt-accent-ink:#0f1620;--fdt-tag:#1a3527;--fdt-tag-ink:#7fd3a3}}
+:root[data-theme="dark"]{--fdt-card:#1b222c;--fdt-ink:#e8edf2;--fdt-muted:#a3aebb;--fdt-line:#2f3a46;--fdt-accent:#8fb0f2;--fdt-accent-ink:#0f1620;--fdt-tag:#1a3527;--fdt-tag-ink:#7fd3a3}
+.fdt-launch{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:2147483000;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 18px;font:600 14px/1 system-ui,sans-serif;background:var(--fdt-ink);color:var(--fdt-card);box-shadow:0 8px 24px -8px rgba(0,0,0,.45);cursor:pointer}
+.fdt-launch span{color:var(--fdt-ring)}
+.fdt-root{position:fixed;inset:0;z-index:2147483001;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.fdt-root[hidden]{display:none}
+.fdt-spot{position:fixed;border-radius:14px;box-shadow:0 0 0 3px var(--fdt-ring),0 0 0 9999px var(--fdt-dim);pointer-events:none;transition:left .25s ease,top .25s ease,width .25s ease,height .25s ease}
+.fdt-spot[hidden]{display:block;box-shadow:0 0 0 9999px var(--fdt-dim);width:0!important;height:0!important}
+.fdt-card{position:fixed;width:min(380px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto;background:var(--fdt-card);color:var(--fdt-ink);border-radius:18px;padding:20px 22px 18px;box-shadow:0 24px 60px -20px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:10px}
+.fdt-center{left:50%!important;top:50%!important;transform:translate(-50%,-50%)}
+.fdt-dock{left:16px!important;right:16px;top:auto!important;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:auto}
+.fdt-card h2{margin:0;font-size:20px;line-height:1.2}
+.fdt-card p{margin:0;color:var(--fdt-muted);font-size:14.5px}
+.fdt-top{display:flex;justify-content:space-between;align-items:center}
+.fdt-kick{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fdt-accent)}
+.fdt-x{border:0;background:transparent;color:var(--fdt-muted);font-size:20px;width:32px;height:32px;border-radius:9px;cursor:pointer}
+.fdt-x:hover{background:var(--fdt-line)}
+.fdt-tag{align-self:flex-start;font-size:11.5px;font-weight:700;background:var(--fdt-tag);color:var(--fdt-tag-ink);border-radius:999px;padding:3px 10px}
+.fdt-link{align-self:flex-start;border:0;background:none;color:var(--fdt-accent);font:inherit;font-size:13.5px;font-weight:600;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.fdt-note textarea,.fdt-out{width:100%;box-sizing:border-box;border:1px solid var(--fdt-line);border-radius:10px;background:transparent;color:var(--fdt-ink);font:inherit;font-size:14px;padding:8px 10px;resize:vertical}
+.fdt-note[hidden],.fdt-out[hidden]{display:none}
+.fdt-dots{display:flex;flex-wrap:wrap;gap:5px}
+.fdt-dot{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--fdt-line);cursor:pointer}
+.fdt-dot.noted{background:var(--fdt-ring)}
+.fdt-dot.on{background:var(--fdt-accent);width:20px;border-radius:5px}
+.fdt-acts{display:flex;justify-content:space-between;gap:8px;margin-top:4px}
+.fdt-btn{border:1px solid var(--fdt-line);background:transparent;color:var(--fdt-ink);font:inherit;font-size:14px;font-weight:600;padding:9px 16px;border-radius:10px;cursor:pointer}
+.fdt-primary{background:var(--fdt-accent);border-color:var(--fdt-accent);color:var(--fdt-accent-ink)}
+.fdt-hint{font-size:12.5px!important}
+.fdt-sum{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:6px;max-height:40vh;overflow:auto}
+.fdt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.fdt-root :focus-visible,.fdt-launch:focus-visible{outline:2px solid var(--fdt-ring);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.fdt-spot{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav><b>Acme Field Service</b><a href="#overview">Overview</a><a href="#jobs">Jobs</a><a href="#billing">Billing</a></nav>
+  <main>
+    <section id="overview">
+      <h1>Good morning, Dana</h1><p class="lede">42 jobs today across 3 regions. 2 need a decision. All data is sample data.</p>
+      <div class="tiles" data-tour="kpis">
+        <div class="tile"><div class="k">First-time fix rate</div><div class="v">87%</div><span class="chip">+4 pts vs last month</span></div>
+        <div class="tile"><div class="k">Jobs at risk of SLA breach</div><div class="v">3</div><span class="chip warn">Needs a decision</span></div>
+        <div class="tile"><div class="k">Ready to invoice</div><div class="v">$18,420</div><span class="chip">9 jobs</span></div>
+      </div>
+      <div class="card" data-tour="assistant"><b>Dispatch assistant</b><p class="lede" style="margin:6px 0 12px">Suggests the nearest qualified technician for each new job. A dispatcher accepts or changes it.</p><button class="btn">Review 4 suggestions</button></div>
+    </section>
+    <section id="jobs">
+      <h1>Jobs</h1><p class="lede">Today, all regions.</p>
+      <div class="card" data-tour="jobs"><table><thead><tr><th>Job</th><th>Site</th><th>Technician</th><th>Status</th></tr></thead><tbody>
+        <tr><td>J-2041 Boiler service</td><td>Harbour Rd</td><td>Sam K.</td><td><span class="chip">On site</span></td></tr>
+        <tr><td>J-2042 HVAC fault</td><td>Mill St</td><td>Suggested: Lee P.</td><td><span class="chip warn">Awaiting dispatcher</span></td></tr>
+        <tr><td>J-2043 Annual check</td><td>Park Ave</td><td>Ana R.</td><td><span class="chip">Travelling</span></td></tr>
+      </tbody></table></div>
+    </section>
+    <section id="billing">
+      <h1>Billing</h1><p class="lede">Drafts from completed jobs this week.</p>
+      <div class="row">
+        <div class="card" data-tour="drafts"><b>Invoice drafts</b><table><tbody><tr><td>Northgate Clinic</td><td>$6,210</td><td><span class="chip">Ready</span></td></tr><tr><td>Bayview School</td><td>$4,980</td><td><span class="chip warn">Parts not priced</span></td></tr></tbody></table></div>
+        <div class="card" data-tour="portal"><b>Customer view</b><p class="lede" style="margin:6px 0 0">Customers see job reports, photos and invoices, and sign off completed work.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+function show(){var id=location.hash.slice(1)||'overview';document.querySelectorAll('section').forEach(function(s){s.classList.toggle('on',s.id===id)});document.querySelectorAll('nav a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})}
+addEventListener('hashchange',show);show();
+</script>
+<script type="application/json" id="fde-tour">{"title": "What is new in prototype v2", "kicker": "Acme Field Service", "intro": "Six stops, about two minutes. Each stop opens a screen and highlights one new feature. Every number is sample data.", "launchLabel": "What is new", "storageKey": "acme-field-service-v2", "feedback": true, "autoStart": true, "outro": "Copy your notes and send them to your delivery lead. We turn each note into a requirement change before the next version.", "steps": [{"screen": "overview", "target": "[data-tour='kpis']", "title": "Today at a glance", "body": "First-time fix rate, jobs at risk of missing their SLA, and money ready to invoice, on one row.", "tag": "OPS-01"}, {"screen": "overview", "target": "[data-tour='assistant']", "title": "Dispatch assistant", "body": "Suggests the nearest qualified technician. A dispatcher accepts or changes every suggestion.", "tag": "AI-02"}, {"screen": "jobs", "target": "[data-tour='jobs']", "title": "Jobs with live status", "body": "Every job shows its technician and status. Suggested assignments wait for a person.", "tag": "OPS-03"}, {"screen": "billing", "target": "[data-tour='drafts']", "title": "Invoice drafts", "body": "Completed jobs become invoice drafts. A draft that needs a person says why.", "tag": "FIN-05"}, {"screen": "billing", "target": "[data-tour='portal']", "title": "Customer view", "body": "Customers see reports, photos and invoices, and sign off completed work.", "tag": "POR-01"}, {"screen": "overview", "target": "[data-tour='kpis']", "title": "Your turn", "body": "Which of these would you use every day? Add a note, then press Finish to copy all your notes.", "tag": "Feedback"}]}</script>
+<script>
+/* FDE spotlight tour: a guided, step-by-step product tour for any HTML prototype.
+   Config: a JSON script tag with id "fde-tour" (see add_spotlight.py --example).
+   Each step can switch screen (location.hash), spotlights one element, explains it,
+   and lets the viewer leave a note. Notes stay in the viewer's browser and can be copied back. */
+(function () {
+  var cfgEl = document.getElementById('fde-tour');
+  if (!cfgEl) return;
+  var C; try { C = JSON.parse(cfgEl.textContent); } catch (e) { console.error('fde-tour: bad JSON', e); return; }
+  var S = C.steps || [], KEY = C.storageKey || 'fde-tour', i = -1, root, spot, card, notes = {};
+  function store(get, k, v) { try { return get ? localStorage.getItem(KEY + k) : localStorage.setItem(KEY + k, v); } catch (e) { return null; } }
+  try { notes = JSON.parse(store(true, ':notes') || '{}'); } catch (e) { notes = {}; }
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function find(s) { try { return s.target ? document.querySelector(s.target) : null; } catch (e) { return null; } }
+  function mk(tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e; }
+
+  function build() {
+    root = mk('div', 'fdt-root'); root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true');
+    root.setAttribute('aria-label', C.title || 'Guided tour');
+    spot = mk('div', 'fdt-spot'); card = mk('div', 'fdt-card'); card.setAttribute('aria-live', 'polite');
+    root.appendChild(spot); root.appendChild(card); document.body.appendChild(root);
+    root.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-fdt]'); if (!b) return;
+      var a = b.getAttribute('data-fdt');
+      if (a === 'next') go(i + 1); else if (a === 'back') go(i - 1); else if (a === 'close') close();
+      else if (a === 'start') go(0); else if (a === 'dot') go(+b.getAttribute('data-i'));
+      else if (a === 'note') { var w = card.querySelector('.fdt-note'); w.hidden = !w.hidden; if (!w.hidden) w.querySelector('textarea').focus(); }
+      else if (a === 'copy') copyNotes(b);
+    });
+    root.addEventListener('input', function (e) {
+      if (e.target.matches('.fdt-note textarea')) { notes[i] = e.target.value; store(false, ':notes', JSON.stringify(notes)); }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (root.hidden || e.target.matches('textarea')) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') go(i + 1); else if (e.key === 'ArrowLeft' && i > 0) go(i - 1);
+    });
+    window.addEventListener('resize', place); document.addEventListener('scroll', place, { passive: true, capture: true });
+  }
+
+  function welcome() {
+    if (!root) build();
+    root.hidden = false; i = -1; spot.hidden = true; card.className = 'fdt-card fdt-center';
+    card.innerHTML = '<span class="fdt-kick">' + esc(C.kicker || 'Guided tour') + '</span><h2>' + esc(C.title || 'What is new') + '</h2><p>' +
+      esc(C.intro || (S.length + ' stops. Each stop shows one feature.')) + '</p>' +
+      (C.feedback !== false ? '<p class="fdt-hint">Leave a note on any stop. At the end you can copy all notes and send them back.</p>' : '') +
+      '<div class="fdt-acts"><button type="button" class="fdt-btn" data-fdt="close">Later</button><button type="button" class="fdt-btn fdt-primary" data-fdt="start">Start the tour</button></div>';
+    card.querySelector('[data-fdt="start"]').focus();
+  }
+
+  function go(n) {
+    if (n < 0) return;
+    if (n >= S.length) { summary(); return; }
+    i = n; var s = S[i];
+    if (s.screen && location.hash.slice(1) !== s.screen.replace(/^#/, '')) location.hash = s.screen.replace(/^#/, '');
+    setTimeout(function () {
+      var t = find(s);
+      if (t) t.scrollIntoView({ block: t.getBoundingClientRect().height > innerHeight * 0.7 ? 'start' : 'center', behavior: 'instant' });
+      render(s, !!t); requestAnimationFrame(place);
+    }, s.screen ? 180 : 40);
+  }
+
+  function dots() {
+    var d = ''; for (var k = 0; k < S.length; k++) d += '<button type="button" class="fdt-dot' + (k === i ? ' on' : '') + (notes[k] ? ' noted' : '') + '" data-fdt="dot" data-i="' + k + '" aria-label="Stop ' + (k + 1) + '"></button>';
+    return '<div class="fdt-dots">' + d + '</div>';
+  }
+
+  function render(s, found) {
+    spot.hidden = !found; card.className = 'fdt-card' + (found ? '' : ' fdt-center');
+    card.innerHTML = '<div class="fdt-top"><span class="fdt-kick">' + (i + 1) + ' of ' + S.length + '</span><button type="button" class="fdt-x" data-fdt="close" aria-label="Close the tour">×</button></div>' +
+      '<h2>' + esc(s.title) + '</h2><p>' + esc(s.body) + '</p>' + (s.tag ? '<span class="fdt-tag">' + esc(s.tag) + '</span>' : '') +
+      (C.feedback !== false ? '<button type="button" class="fdt-link" data-fdt="note">' + (notes[i] ? 'Edit your note' : 'Add a note') + '</button><div class="fdt-note"' + (notes[i] ? '' : ' hidden') + '><label class="fdt-sr" for="fdt-n">Your note on this stop</label><textarea id="fdt-n" rows="3" placeholder="What works, what is missing, what would you change?">' + esc(notes[i] || '') + '</textarea></div>' : '') +
+      dots() + '<div class="fdt-acts">' + (i > 0 ? '<button type="button" class="fdt-btn" data-fdt="back">Back</button>' : '<span></span>') +
+      '<button type="button" class="fdt-btn fdt-primary" data-fdt="next">' + (i === S.length - 1 ? 'Finish' : 'Next') + '</button></div>';
+    card.querySelector('[data-fdt="next"]').focus({ preventScroll: true });
+  }
+
+  function summary() {
+    i = -1; spot.hidden = true; card.className = 'fdt-card fdt-center';
+    var list = S.map(function (s, k) { return notes[k] ? '<li><b>' + esc(s.title) + '</b> ' + esc(notes[k]) + '</li>' : ''; }).join('');
+    card.innerHTML = '<span class="fdt-kick">End of tour</span><h2>' + esc(C.outroTitle || 'Thank you') + '</h2><p>' + esc(C.outro || 'Tell us what to change. Copy your notes and send them back.') + '</p>' +
+      (list ? '<ul class="fdt-sum">' + list + '</ul><div class="fdt-acts"><button type="button" class="fdt-btn" data-fdt="start">Tour again</button><button type="button" class="fdt-btn fdt-primary" data-fdt="copy">Copy my notes</button></div><textarea class="fdt-out" readonly hidden></textarea>'
+        : '<p class="fdt-hint">No notes yet. Start again and add a note on any stop.</p><div class="fdt-acts"><button type="button" class="fdt-btn" data-fdt="close">Close</button><button type="button" class="fdt-btn fdt-primary" data-fdt="start">Tour again</button></div>');
+    store(false, ':seen', '1');
+  }
+
+  function copyNotes(btn) {
+    var text = (C.title || 'Tour') + ' — notes\n' + S.map(function (s, k) { return notes[k] ? '- ' + s.title + (s.tag ? ' [' + s.tag + ']' : '') + ': ' + notes[k] : ''; }).filter(Boolean).join('\n');
+    var out = card.querySelector('.fdt-out');
+    function fallback() { out.hidden = false; out.value = text; out.select(); btn.textContent = 'Select and copy the text'; }
+    try { navigator.clipboard.writeText(text).then(function () { btn.textContent = 'Copied'; }, fallback); } catch (e) { fallback(); }
+  }
+
+  function place() {
+    if (!root || root.hidden || i < 0) return;
+    var t = find(S[i]); if (!t) return;
+    var r = t.getBoundingClientRect(), p = 8, vh = innerHeight, vw = innerWidth;
+    var top = Math.max(8, r.top - p), bot = Math.min(vh - 8, r.bottom + p);
+    spot.style.left = Math.max(8, r.left - p) + 'px'; spot.style.top = top + 'px';
+    spot.style.width = Math.min(vw - 16, r.width + p * 2) + 'px'; spot.style.height = Math.max(24, bot - top) + 'px';
+    if (vw < 700) { card.classList.add('fdt-dock'); card.style.left = card.style.top = ''; return; }
+    card.classList.remove('fdt-dock');
+    var cw = card.offsetWidth, ch = card.offsetHeight, x = Math.min(Math.max(12, r.left), vw - cw - 12), y;
+    if (vh - bot > ch + 16) y = bot + 12; else if (top > ch + 16) y = top - ch - 12;
+    else if (r.right + cw + 24 < vw) { x = r.right + 12; y = Math.min(Math.max(12, top), vh - ch - 12); }
+    else y = Math.max(12, vh - ch - 16);
+    card.style.left = x + 'px'; card.style.top = y + 'px';
+  }
+
+  function close() { if (root) root.hidden = true; i = -1; store(false, ':seen', '1'); }
+
+  var launch = mk('button', 'fdt-launch'); launch.type = 'button';
+  launch.innerHTML = '<span aria-hidden="true">✦</span> ' + esc(C.launchLabel || 'Take the tour');
+  launch.addEventListener('click', welcome); document.body.appendChild(launch);
+  window.fdeTour = { start: welcome, go: go };
+  if (C.autoStart !== false && store(true, ':seen') !== '1') setTimeout(welcome, 700);
+})();
+</script>
+</body>
+</html>

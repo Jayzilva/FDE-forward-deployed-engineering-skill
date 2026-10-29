@@ -1,0 +1,18 @@
+{
+  "title": "What is new in prototype v2",
+  "kicker": "Acme Field Service",
+  "intro": "Six stops, about two minutes. Each stop opens a screen and highlights one new feature. Every number is sample data.",
+  "launchLabel": "What is new",
+  "storageKey": "acme-field-service-v2",
+  "feedback": true,
+  "autoStart": true,
+  "outro": "Copy your notes and send them to your delivery lead. We turn each note into a requirement change before the next version.",
+  "steps": [
+    {"screen": "overview", "target": "[data-tour='kpis']", "title": "Today at a glance", "body": "First-time fix rate, jobs at risk of missing their SLA, and money ready to invoice, on one row.", "tag": "OPS-01"},
+    {"screen": "overview", "target": "[data-tour='assistant']", "title": "Dispatch assistant", "body": "Suggests the nearest qualified technician. A dispatcher accepts or changes every suggestion.", "tag": "AI-02"},
+    {"screen": "jobs", "target": "[data-tour='jobs']", "title": "Jobs with live status", "body": "Every job shows its technician and status. Suggested assignments wait for a person.", "tag": "OPS-03"},
+    {"screen": "billing", "target": "[data-tour='drafts']", "title": "Invoice drafts", "body": "Completed jobs become invoice drafts. A draft that needs a person says why.", "tag": "FIN-05"},
+    {"screen": "billing", "target": "[data-tour='portal']", "title": "Customer view", "body": "Customers see reports, photos and invoices, and sign off completed work.", "tag": "POR-01"},
+    {"screen": "overview", "target": "[data-tour='kpis']", "title": "Your turn", "body": "Which of these would you use every day? Add a note, then press Finish to copy all your notes.", "tag": "Feedback"}
+  ]
+}
