@@ -53,6 +53,10 @@ Structure: the answer (did it work, by the agreed criteria) → the evidence (ba
 
 When a programme or steering group reviews the piece, prepare `templates/evaluation-pack.md`. Rank every concern as confident, acceptable risk or doubt, and say what evidence would move it. A reviewer trusts a "doubt" you name more than a risk they find.
 
+## Value ledger and acceptance
+
+Keep implemented, verified, deployed, measured and accepted apart. Only a row with a measured value, a named client-side signer, a date and a source counts as accepted (`references/evidence-ledger.md`). Run `python scripts/evidence_check.py fde/` before every readout and lead with accepted rows.
+
 ## Exit artifacts
 
-Pilot plan, ROI scorecard, readout deck or doc, decision on scale/adjust/stop.
+Value ledger with accepted rows, pilot plan, ROI scorecard, readout deck or doc, decision on scale/adjust/stop.

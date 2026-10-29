@@ -42,6 +42,10 @@ Write an ADR for: model choice, hosting location, data flow across trust boundar
 
 When you build glue that another client will also need, log it: the need, the workaround, the estimated reuse. This is how FDE work becomes product, and it is the main argument for the FDE function's value inside your own company.
 
+## Change safety
+
+Before you touch an unfamiliar or shared system, trace the blast radius. Before a release, rehearse the rollback. `references/change-safety.md`, `assets/templates/change-impact.md`.
+
 ## Exit criteria
 
-Running in the client environment with real data; evals green against agreed thresholds; observability live; risk register current; ADRs written.
+Running in the client environment with real data; evals green against agreed thresholds; observability live; risk register current; ADRs written; decision log sourced; rollback rehearsed for each release.

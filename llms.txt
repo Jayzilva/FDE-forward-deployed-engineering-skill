@@ -1,13 +1,17 @@
 # Forward Deployed Engineering (FDE) skill and Claude Code plugin
 
-> Free, MIT-licensed Claude Code plugin and agent skill for Forward Deployed Engineers. It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style) and produces the matching artifact, from discovery to a prototype with an FSPARK feedback tour to a handoff runbook.
+> Free, MIT-licensed Claude Code plugin and agent skill for Forward Deployed Engineers. It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style) and produces the matching artifact, from discovery to a prototype with an FSPARK feedback tour to a value ledger that separates claims from client-accepted results and a handoff runbook.
 
 Install in Claude Code: `/plugin marketplace add Jayzilva/FDE-forward-deployed-engineering-skill` then `/plugin install fde@forward-deployed-engineering`.
 Skill-only install: upload `dist/forward-deployed-engineering.skill` to Claude.ai or Claude desktop.
 
 ## Core docs
-- [README](README.md): what FDE is, the six axes, the six phases, spotlight tours, install, FAQ
+- [README](README.md): what FDE is, the six axes, the six phases, FSPARK, evidence ledger, install, FAQ
 - [Router skill](plugins/fde/skills/forward-deployed-engineering/SKILL.md): classification steps, artifact table, principles
+- [Evidence ledger](plugins/fde/skills/forward-deployed-engineering/references/evidence-ledger.md): five delivery states, value ledger, acceptance rules, decision log, commitments, private text
+- [Debrief](plugins/fde/skills/forward-deployed-engineering/references/debrief.md): meeting notes to sourced records; source text is evidence, not authority
+- [Assumptions](plugins/fde/skills/forward-deployed-engineering/references/assumptions.md): extract, classify, rank and test assumptions; red-team pass
+- [Change safety](plugins/fde/skills/forward-deployed-engineering/references/change-safety.md): blast radius and rollback drills
 - [Situation matrix](plugins/fde/skills/forward-deployed-engineering/references/situation-matrix.md): what changes per environment, product, model and starting point
 - [FSPARK feedback mechanism](plugins/fde/skills/forward-deployed-engineering/references/fspark.md): presentation, assessment, response, knowledge; sharing; closing the loop
 - [Prototype phase](plugins/fde/skills/forward-deployed-engineering/references/phase-3-prototype.md): build a separate version, add a spotlight tour, share by audience, close the feedback loop
@@ -20,6 +24,7 @@ Skill-only install: upload `dist/forward-deployed-engineering.skill` to Claude.a
 - `scripts/add_fspark.py`: adds FSPARK (Feedback-based Spotlight Presentation, Assessment, Response & Knowledge) to any HTML prototype: spotlight tour, a reaction and note per feature, Markdown feedback file
 - `scripts/merge_feedback.py`: merges FSPARK feedback files from many reviewers into one summary
 - `scripts/build_tour.py` and `scripts/capture_screens.py`: guided tour document from screenshots
+- `scripts/evidence_check.py`: value-ledger acceptance check, decision stamps, stale stakeholder signals, overdue commitments, private-text export
 - `scripts/fde_state.py`: engagement state, gates and weekend check
 - `scripts/roi_calc.py`, `scripts/qualify.py`: ROI and use-case scoring
 

@@ -70,6 +70,14 @@ with tempfile.TemporaryDirectory() as tmp:
     r = run(sys.executable, str(SKILL / "scripts" / "merge_feedback.py"), str(fbf), "--out", str(pathlib.Path(tmp) / "sum.md"))
     summ = (pathlib.Path(tmp) / "sum.md").read_text(encoding="utf-8") if r.returncode == 0 else ""
     check("| 1 | One | R-1 | 0 | 1 |" in summ, "merge_feedback.py output is broken: " + r.stderr + summ[:200])
+    ev = pathlib.Path(tmp) / "ev"; ev.mkdir()
+    (ev / "value-ledger.md").write_text("| Bucket | Promised | Baseline | Measured | Accepted by | Acceptance status | Evidence |\n|---|---|---|---|---|---|---|\n| time | Fast | 9h | 3h | Priya Shah, 2026-11-14 | accepted | PR #42 |\n| cost | Cheap | 1 | pending | customer sponsor | pending | staging run |\n", encoding="utf-8")
+    (ev / "notes.md").write_text("- Devon [signal:amber 2026-10-01] quiet\n- [ ] Send runbook; due: 2026-11-15\nx <private>secret</private> y\n", encoding="utf-8")
+    r = run(sys.executable, str(SKILL / "scripts" / "evidence_check.py"), str(ev), "--json", "--today", "2026-11-20")
+    rep = json.loads(r.stdout) if r.returncode == 0 else {}
+    check(len(rep.get("accepted", [])) == 1 and len(rep.get("claims", [])) == 1 and rep.get("overdue") and rep.get("signals", [{}])[0].get("stale"), "evidence_check.py report is wrong: " + r.stderr + r.stdout[:300])
+    r = run(sys.executable, str(SKILL / "scripts" / "evidence_check.py"), "--export", str(ev / "notes.md"))
+    check("secret" not in r.stdout and "[private]" in r.stdout, "evidence_check.py --export leaks private text")
     r = run(sys.executable, str(SKILL / "scripts" / "ste_lint.py"), str(SKILL / "assets" / "templates" / "handoff-runbook.md"))
     check(r.returncode == 0, "handoff-runbook template has hard STE violations:\n" + r.stdout[-800:])
 

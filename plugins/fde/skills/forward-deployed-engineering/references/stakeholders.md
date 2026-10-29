@@ -35,6 +35,10 @@ Have the one-to-one conversation before escalating. Escalate with facts, impact,
 
 A useful model: trust grows with credibility, reliability, and intimacy, and shrinks with self-orientation. In practice: know their business, do what you said by when you said it, listen more than you pitch, and make it about their win, not your product.
 
+## Trust signals
+
+Record stance changes as dated tokens next to the person: `Mara Ortiz [signal:green 2026-11-12] asked for the next demo`. Use `green` (engaged, acting on your work), `amber` (quiet, delaying, hedging) or `red` (blocking, escalating, disengaged). A signal older than 21 days is stale: talk to the person before you rely on it. No token means "not yet asked", not green. `scripts/evidence_check.py` lists the latest signal per person and flags stale ones. Act on amber within a week, before it turns red.
+
 ## Scope pressure
 
 New requests are a sign the client sees value. Respond with "yes, and here is where it fits" against the out-of-scope list: now (swap for something), next phase, or not recommended (with the reason).

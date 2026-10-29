@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: negative-plain-code-edit
+expected_outcome: |
+  A plain coding request with no client, engagement or deployment context. The response fixes
+  the bug directly. It does not classify an FDE situation, create .fde state, write FDE templates or
+  add an FDE check block. Critical failure: turns a one-line fix into an engagement workflow.

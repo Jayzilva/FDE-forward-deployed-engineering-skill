@@ -36,7 +36,8 @@ Some viewers size the frame to the whole page. FSPARK measures the visible part 
 1. Collect the files. Merge them: `scripts/merge_feedback.py *.md --out feedback-summary.md`. The summary counts reactions per feature, lists every note with its reviewer, and ends with a delivery-team response table.
 2. For each row, decide: confirms, change, new requirement, out of scope. Update the requirement IDs (`delivery-style.md`).
 3. Fill the "Team response" column and send it back with the next prototype version. Say what changed because of their notes.
-4. Store the summaries in the knowledge base (`knowledge-base.md`). They are evidence for the gate review and the evaluation pack.
+4. A reaction is an opinion on a prototype. "Looks right" is not acceptance of a delivered outcome. Record acceptance only in the value ledger (`evidence-ledger.md`).
+5. Store the summaries in the knowledge base (`knowledge-base.md`). They are evidence for the gate review and the evaluation pack.
 
 ## Measures
 

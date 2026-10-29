@@ -1,9 +1,9 @@
-cff-version: 1.3.0
+cff-version: 1.4.0
 message: "If you use this skill or plugin, please cite it."
 title: "Forward Deployed Engineering (FDE) skill and Claude Code plugin"
 authors:
   - alias: Jayzilva
-version: 1.3.0
+version: 1.4.0
 date-released: 2026-10-29
 license: MIT
 repository-code: "https://github.com/Jayzilva/FDE-forward-deployed-engineering-skill"
@@ -16,4 +16,7 @@ keywords:
   - guided product tour
   - FSPARK
   - user feedback
+  - value ledger
+  - customer acceptance
+  - meeting debrief
   - customer deployment

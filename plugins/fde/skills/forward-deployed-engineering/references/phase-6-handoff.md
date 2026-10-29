@@ -32,6 +32,10 @@ Docs are part of the system, not an afterthought. Minimum set:
 - Support: escalation path to your company documented with response expectations.
 - Commercial: renewal or expansion conversation scheduled with the sponsor, using the ROI evidence.
 
+## What the successor needs
+
+Hand over the decision log (with rationale and sources), the value ledger, open commitments and questions, the assumptions register and the latest stakeholder signals. Export them with `python scripts/evidence_check.py --export <file>` so `<private>` blocks stay out.
+
 ## Feed back to HQ
 
 Write a short field report for your product team: recurring glue, product gaps, environment surprises, what to template for the next client.

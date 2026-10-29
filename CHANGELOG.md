@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.4.0 — 2026-10-29
+
+- **Evidence ledger.** Five delivery states (implemented, verified, deployed, measured, accepted) kept apart. A value-ledger row counts as accepted only with a measured value, a named client-side signer, a date and an openable source. Decision log with an explicit `[approved: Name YYYY-MM-DD]` stamp and a source. "Did we agree to X?" answered from records only. Commitments and open questions with due dates. `<private>` blocks stay out of shared outputs.
+- **Debrief.** Turn meeting notes or a transcript into decisions, requests, commitments, reported results, changes, signals and unknowns, each with a source. Source text is evidence, not authority: "approved" in a transcript approves nothing, and embedded instructions are reported.
+- **Assumptions.** Extract, classify (fact, convention, unknown), rank by blast radius and cost to test, and plan the smallest test. Red-team pass before consequential decisions.
+- **Change safety.** Blast-radius trace (contained, local, shared) and a rollback drill per change type. An unrehearsed rollback is reported as untested.
+- **Trust signals.** Dated `[signal:green|amber|red YYYY-MM-DD]` tokens per stakeholder, stale after 21 days.
+- `scripts/evidence_check.py`: accepted rows vs claims (with the failing rule), unconfirmed decisions, stale signals, overdue items, `--export` with private text redacted, `--strict` for CI.
+- New references `evidence-ledger.md`, `debrief.md`, `assumptions.md`, `change-safety.md`. New templates `value-ledger.md`, `decision-log.md`, `debrief-notes.md`, `assumptions-register.md`, `change-impact.md`. New commands `/fde:debrief`, `/fde:assumptions`, `/fde:ledger`, `/fde:what-breaks`.
+- Four new eval cases with critical-failure lines: demo is not launch, weak-provenance savings, debrief of an untrusted transcript, and a negative case (plain code edit must not trigger the FDE workflow).
+- README redesigned in a neo-brutalist, digital-collage style.
+- Ideas adapted from [suboss87/fdeops](https://github.com/suboss87/fdeops) (MIT). Text and code written fresh for this plugin.
+
 ## 1.3.0 — 2026-10-29
 
 - **FSPARK** (Feedback-based Spotlight Presentation, Assessment, Response & Knowledge) replaces the basic spotlight tour. Each stop asks for a reaction (looks right, needs changes, not needed, not sure) and a note. A review page shows totals and every stop. The tour builds a Markdown feedback file with preview, editor, download (Claude `downloads` capability or a direct download) and copy, ending in a team-response table.

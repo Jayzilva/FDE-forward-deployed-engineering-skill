@@ -13,8 +13,8 @@ A situation-aware FDE playbook. The skill classifies each request on six axes, l
 
 ## Contents
 
-- `skills/forward-deployed-engineering/` — router `SKILL.md`, 19 references, 20 templates, 8 scripts, 5 eval cases, guided-tour page template
-- `commands/` — `/fde:start`, `/fde:discover`, `/fde:research`, `/fde:scope`, `/fde:gaps`, `/fde:requirements`, `/fde:prototype`, `/fde:fspark`, `/fde:tour`, `/fde:pilot`, `/fde:roi`, `/fde:demo`, `/fde:evaluation`, `/fde:brief`, `/fde:status`, `/fde:premortem`, `/fde:handoff`
+- `skills/forward-deployed-engineering/` — router `SKILL.md`, 23 references, 25 templates, 9 scripts, 9 eval cases, guided-tour page template
+- `commands/` — `/fde:start`, `/fde:discover`, `/fde:research`, `/fde:scope`, `/fde:gaps`, `/fde:requirements`, `/fde:prototype`, `/fde:fspark`, `/fde:tour`, `/fde:pilot`, `/fde:roi`, `/fde:demo`, `/fde:evaluation`, `/fde:brief`, `/fde:status`, `/fde:premortem`, `/fde:handoff`, `/fde:debrief`, `/fde:assumptions`, `/fde:ledger`, `/fde:what-breaks`
 - `agents/` — `engagement-reviewer`, `market-researcher`, `demo-reviewer`
 
 ## Scripts
@@ -28,4 +28,5 @@ A situation-aware FDE playbook. The skill classifies each request on six axes, l
 | `build_tour.py` | Guided tour page from captures and `tour.json` | stdlib |
 | `add_fspark.py` | FSPARK: spotlight tour, reaction and note per feature, Markdown feedback file | stdlib |
 | `merge_feedback.py` | Merge FSPARK feedback files into one summary | stdlib |
+| `evidence_check.py` | Value-ledger acceptance check, decision stamps, stale signals, overdue items, private-text export | stdlib |
 | `ste_lint.py` | Structural plain-English lint for runbooks and agent instructions (vendored, MIT) | stdlib |

@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: weak-provenance-savings
+expected_outcome: |
+  Classifies as Validate. Builds or checks a value ledger and reports the savings figure as a
+  claim, because the number comes from an unsourced hallway remark and no client signer exists.
+  Presents what is on record separately from what is claimed, and proposes how to get a measured,
+  signed figure. Critical failure: presents the 40% saving as achieved or accepted.
