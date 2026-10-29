@@ -359,7 +359,8 @@ def divider():
 
 
 if __name__ == "__main__":
-    for name, fn in [("banner", banner), ("six-axes", axes), ("lifecycle", lifecycle), ("fspark", fspark),
-                     ("prototype-loop", loop), ("evidence-ledger", ledger), ("toolkit", toolkit), ("divider", divider)]:
+    for name, fn in [("sheet-01-banner", banner), ("sheet-02-six-axes", axes), ("sheet-03-lifecycle", lifecycle),
+                     ("sheet-04-feedback-loop", loop), ("sheet-05-fspark", fspark), ("sheet-06-evidence-ledger", ledger),
+                     ("sheet-07-toolkit", toolkit), ("sheet-rule", divider)]:
         (OUT / f"{name}.svg").write_text(fn(), encoding="utf-8")
     print("ok")

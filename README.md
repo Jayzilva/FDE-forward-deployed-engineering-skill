@@ -7,7 +7,7 @@
 -->
 
 <p align="center">
-  <img src="docs/images/banner.svg" alt="Forward Deployed Engineering: a Claude Code plugin and agent skill that classifies any engagement on six axes and produces the right artifact" width="100%">
+  <img src="docs/images/sheet-01-banner.svg" alt="Forward Deployed Engineering: a Claude Code plugin and agent skill that classifies any engagement on six axes and produces the right artifact" width="100%">
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@
 
 **`INDEX`** &nbsp; [What is FDE](#what-is-forward-deployed-engineering) · [How it works](#how-it-works-classify-then-act) · [Six phases](#the-six-phases) · [FSPARK](#fspark-the-feedback-mechanism) · [Evidence ledger](#evidence-ledger-claim-or-accepted) · [What's in the box](#whats-in-the-box) · [Install](#install) · [Quick start](#quick-start) · [FAQ](#faq) · [Key facts](#key-facts)
 
-<img src="docs/images/divider.svg" alt="" width="100%">
+<img src="docs/images/sheet-rule.svg" alt="" width="100%">
 
 <a id="what-is-forward-deployed-engineering"></a>
 
@@ -46,7 +46,7 @@ FDE is a process, not a checklist. The right next move depends on the project, t
 
 ## `02` &nbsp;How it works: classify, then act
 
-<p align="center"><img src="docs/images/six-axes.svg" alt="The six classification axes: phase, environment, product, engagement model, starting point and delivery style" width="100%"></p>
+<p align="center"><img src="docs/images/sheet-02-six-axes.svg" alt="The six classification axes: phase, environment, product, engagement model, starting point and delivery style" width="100%"></p>
 
 | | Axis | Values | Why it matters |
 |---|---|---|---|
@@ -63,15 +63,15 @@ The skill infers each axis from your request and your repository, states its ass
 
 ## `03` &nbsp;The six phases
 
-<p align="center"><img src="docs/images/lifecycle.svg" alt="Six FDE phases with the artifacts each produces, and a client feedback loop from prototype back to scope" width="100%"></p>
+<p align="center"><img src="docs/images/sheet-03-lifecycle.svg" alt="Six FDE phases with the artifacts each produces, and a client feedback loop from prototype back to scope" width="100%"></p>
 
-<img src="docs/images/divider.svg" alt="" width="100%">
+<img src="docs/images/sheet-rule.svg" alt="" width="100%">
 
 <a id="fspark-the-feedback-mechanism"></a>
 
 ## `04` &nbsp;FSPARK: the feedback mechanism
 
-<p align="center"><img src="docs/images/fspark.svg" alt="FSPARK: Feedback-based Spotlight Presentation, Assessment, Response and Knowledge" width="100%"></p>
+<p align="center"><img src="docs/images/sheet-05-fspark.svg" alt="FSPARK: Feedback-based Spotlight Presentation, Assessment, Response and Knowledge" width="100%"></p>
 
 **FSPARK (Feedback-based Spotlight Presentation, Assessment, Response & Knowledge) turns a prototype into a structured feedback session.** It shows the people who will use the product exactly what was built, asks what they think of each feature, and returns their answers as a Markdown file the team acts on.
 
@@ -95,7 +95,7 @@ python scripts/merge_feedback.py feedback/*.md --out feedback-summary.md      # 
 
 The output is **one self-contained HTML file**: no external requests, works offline. Inside a Claude artifact, publish with capabilities `{"downloads": true}` so the download button saves the file. Elsewhere it downloads directly, and Copy always works.
 
-<p align="center"><img src="docs/images/prototype-loop.svg" alt="Prototype feedback loop: build, FSPARK, check, share by audience, collect, triage, next version" width="100%"></p>
+<p align="center"><img src="docs/images/sheet-04-feedback-loop.svg" alt="Prototype feedback loop: build, FSPARK, check, share by audience, collect, triage, next version" width="100%"></p>
 
 | Audience | Channel | Feedback comes back as |
 |---|---|---|
@@ -106,13 +106,13 @@ The output is **one self-contained HTML file**: no external requests, works offl
 
 **Close the loop:** merge every reviewer's file, decide each row (confirms, change, new requirement, out of scope), update the requirement IDs, fill the team-response column and send it back with the next version. Try it: open [`examples/fspark-demo/index.html`](examples/fspark-demo/index.html), a fictional field-service prototype with a six-stop tour.
 
-<img src="docs/images/divider.svg" alt="" width="100%">
+<img src="docs/images/sheet-rule.svg" alt="" width="100%">
 
 <a id="evidence-ledger-claim-or-accepted"></a>
 
 ## `05` &nbsp;Evidence ledger: claim or accepted?
 
-<p align="center"><img src="docs/images/evidence-ledger.svg" alt="Evidence ledger: five delivery states from implemented to accepted, and a value-ledger row that counts as accepted only with a named signer, date and source" width="100%"></p>
+<p align="center"><img src="docs/images/sheet-06-evidence-ledger.svg" alt="Evidence ledger: five delivery states from implemented to accepted, and a value-ledger row that counts as accepted only with a named signer, date and source" width="100%"></p>
 
 **New in 1.4. A deployment is judged on what the client accepts, not on what the team reports.** The evidence ledger keeps five delivery states apart and refuses to promote a claim without proof.
 
@@ -138,13 +138,13 @@ python scripts/evidence_check.py fde/ --strict         # exit 1 on claims or ove
 python scripts/evidence_check.py --export fde/x.md     # share a file with <private> blocks redacted
 ```
 
-<img src="docs/images/divider.svg" alt="" width="100%">
+<img src="docs/images/sheet-rule.svg" alt="" width="100%">
 
 <a id="whats-in-the-box"></a>
 
 ## `06` &nbsp;What's in the box
 
-<p align="center"><img src="docs/images/toolkit.svg" alt="One router skill, 23 references, 25 templates, 9 scripts, 21 commands, 3 agents and 9 eval cases" width="100%"></p>
+<p align="center"><img src="docs/images/sheet-07-toolkit.svg" alt="One router skill, 23 references, 25 templates, 9 scripts, 21 commands, 3 agents and 9 eval cases" width="100%"></p>
 
 | Part | Count | Highlights |
 |---|---|---|
@@ -286,6 +286,6 @@ Contributions are welcome: new environment or product sections, engagement model
 
 Builds on public FDE material (Awesome-FDE-Roadmap, GeeksforGeeks FDE roadmap, Anthropic's delivery methodology outline) and on field practice from real programme and client deployments. The evidence ledger, debrief, assumptions and change-safety methods in 1.4 adapt ideas from [suboss87/fdeops](https://github.com/suboss87/fdeops) (MIT); the text and code here are written fresh. `ste_lint.py` is vendored from [danyuchn/asd-ste100-skill](https://github.com/danyuchn/asd-ste100-skill) (MIT, see `scripts/LICENSE-asd-ste100`).
 
-<img src="docs/images/divider.svg" alt="" width="100%">
+<img src="docs/images/sheet-rule.svg" alt="" width="100%">
 
 <p align="center"><sub><code>SHEET 00 / 07</code> &nbsp;·&nbsp; MIT LICENCE &nbsp;·&nbsp; BUILT FOR THE PEOPLE WHO STAY UNTIL IT RUNS WITHOUT THEM</sub></p>
