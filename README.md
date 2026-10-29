@@ -10,12 +10,12 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-2B59C3"></a>
-  <a href=".claude-plugin/marketplace.json"><img alt="Version 1.2.0" src="https://img.shields.io/badge/version-1.2.0-0F766E"></a>
-  <img alt="Claude Code plugin" src="https://img.shields.io/badge/Claude%20Code-plugin-7C3AED">
-  <img alt="Agent skill" src="https://img.shields.io/badge/Agent-skill-B45309">
-  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-0369A1">
-  <img alt="Templates: 20" src="https://img.shields.io/badge/templates-20-BE185D">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/licence-MIT-1C1D1F?style=flat-square&labelColor=1C1D1F&color=B5F23D"></a>
+  <a href=".claude-plugin/marketplace.json"><img alt="Version 1.2.0" src="https://img.shields.io/badge/version-1.2.0-1C1D1F?style=flat-square&labelColor=1C1D1F&color=EDEDED"></a>
+  <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
+  <img alt="Agent skill" src="https://img.shields.io/badge/agent-skill-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
+  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
+  <img alt="Templates: 20" src="https://img.shields.io/badge/templates-20-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
 </p>
 
 # Forward Deployed Engineering (FDE) skill and Claude Code plugin
@@ -44,12 +44,12 @@ FDE is a process, not a checklist. The right next move depends on the project, t
 
 | Axis | Values | Why it matters |
 |---|---|---|
-| 🧭 **Phase** | discover · scope · prototype · build · validate · handoff | Decides the playbook and the artifact |
-| 🛡️ **Environment** | cloud · regulated · on-prem · air-gapped | Moves security, network and accreditation work to week one |
-| 📦 **Product** | ai-agent · claude-code · data-platform · api-integration · business-app | Sets the metrics, evals and handoff contents |
-| 🤝 **Engagement model** | external · internal · programme · partner | Decides who signs off and what "done" means |
-| 🚩 **Starting point** | greenfield · prototype-exists · legacy-replace · rescue · scale-out | Changes the first two weeks the most |
-| 🔁 **Delivery style** | classic (tickets) · spec-driven (spec → plan → build → verify) | Sets the tracking unit, measures and AI cost model |
+| `01` **Phase** | discover · scope · prototype · build · validate · handoff | Decides the playbook and the artifact |
+| `02` **Environment** | cloud · regulated · on-prem · air-gapped | Moves security, network and accreditation work to week one |
+| `03` **Product** | ai-agent · claude-code · data-platform · api-integration · business-app | Sets the metrics, evals and handoff contents |
+| `04` **Engagement model** | external · internal · programme · partner | Decides who signs off and what "done" means |
+| `05` **Starting point** | greenfield · prototype-exists · legacy-replace · rescue · scale-out | Changes the first two weeks the most |
+| `06` **Delivery style** | classic (tickets) · spec-driven (spec → plan → build → verify) | Sets the tracking unit, measures and AI cost model |
 
 The skill infers each axis from your request and your repository, states its assumptions in one line, and loads only the playbook that fits. Every answer ends with an **FDE check**: the situation, the biggest risk now, and one next move with an owner and a date.
 
@@ -73,10 +73,10 @@ The output is **one self-contained HTML file**: no external requests, works offl
 
 | Audience | Channel | Feedback comes back as |
 |---|---|---|
-| 🏢 Inside your organisation | Claude artifact shared with the organisation | Artifact comments and copied notes |
-| 🌐 Outside, public links allowed | Claude artifact with "anyone with the link" | Copied notes in a reply |
-| ✉️ Outside, no Claude access | The single HTML file by email, portal or file share | Copied notes in a reply |
-| 🔒 Regulated or confidential | The single HTML file through the client's approved channel only | Copied notes, stored with engagement records |
+| Inside your organisation | Claude artifact shared with the organisation | Artifact comments and copied notes |
+| Outside, public links allowed | Claude artifact with "anyone with the link" | Copied notes in a reply |
+| Outside, no Claude access | The single HTML file by email, portal or file share | Copied notes in a reply |
+| Regulated or confidential | The single HTML file through the client's approved channel only | Copied notes, stored with engagement records |
 
 Try it: open [`examples/spotlight-demo/index.html`](examples/spotlight-demo/index.html) in a browser. It is a fictional field-service prototype with a six-stop tour.
 
@@ -84,13 +84,13 @@ Try it: open [`examples/spotlight-demo/index.html`](examples/spotlight-demo/inde
 
 | Part | Count | Highlights |
 |---|---|---|
-| 🧠 Router skill `forward-deployed-engineering` | 1 | Classifies on six axes. Loads only the matching playbook. Under 500 lines |
-| 📚 References | 18 | One per phase, engagement model, starting point, environment, product, market research, delivery style, knowledge base, stakeholders, failure modes, plain-English writing |
-| 📝 Templates | 20 | Site survey, system map, competitor profile, gap matrix, requirements with trace, outcome card, executive brief, prototype scope, ADR, risk register, pilot plan, ROI scorecard, demo checklist, evaluation pack, handoff runbook and more |
-| ⚙️ Scripts (Python 3) | 7 | `fde_state.py` · `qualify.py` · `roi_calc.py` · `capture_screens.py` · `build_tour.py` · `add_spotlight.py` · `ste_lint.py` |
-| ⌨️ Slash commands | 17 | `/fde:start` `/fde:discover` `/fde:research` `/fde:scope` `/fde:gaps` `/fde:requirements` `/fde:brief` `/fde:prototype` `/fde:spotlight` `/fde:tour` `/fde:pilot` `/fde:roi` `/fde:demo` `/fde:evaluation` `/fde:status` `/fde:premortem` `/fde:handoff` |
-| 🤖 Agents | 3 | `engagement-reviewer` (pre-mortem) · `market-researcher` (sourced competitor profiles) · `demo-reviewer` (evidence-only gate review) |
-| ✅ Eval cases | 5 | Regulated KYC discovery · Claude Code pilot ROI · air-gapped handoff · internal legacy replacement · programme gate plan |
+| Router skill `forward-deployed-engineering` | 1 | Classifies on six axes. Loads only the matching playbook. Under 500 lines |
+| References | 18 | One per phase, engagement model, starting point, environment, product, market research, delivery style, knowledge base, stakeholders, failure modes, plain-English writing |
+| Templates | 20 | Site survey, system map, competitor profile, gap matrix, requirements with trace, outcome card, executive brief, prototype scope, ADR, risk register, pilot plan, ROI scorecard, demo checklist, evaluation pack, handoff runbook and more |
+| Scripts (Python 3) | 7 | `fde_state.py` · `qualify.py` · `roi_calc.py` · `capture_screens.py` · `build_tour.py` · `add_spotlight.py` · `ste_lint.py` |
+| Slash commands | 17 | `/fde:start` `/fde:discover` `/fde:research` `/fde:scope` `/fde:gaps` `/fde:requirements` `/fde:brief` `/fde:prototype` `/fde:spotlight` `/fde:tour` `/fde:pilot` `/fde:roi` `/fde:demo` `/fde:evaluation` `/fde:status` `/fde:premortem` `/fde:handoff` |
+| Agents | 3 | `engagement-reviewer` (pre-mortem) · `market-researcher` (sourced competitor profiles) · `demo-reviewer` (evidence-only gate review) |
+| Eval cases | 5 | Regulated KYC discovery · Claude Code pilot ROI · air-gapped handoff · internal legacy replacement · programme gate plan |
 
 ### Scripts at a glance
 
