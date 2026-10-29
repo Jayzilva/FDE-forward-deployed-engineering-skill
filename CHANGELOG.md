@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 — 2026-10-29
+
+- New templates: `evaluation-pack.md` (programme gate or stakeholder review: problem, customer wish, research, prototype, success, concerns ranked by confidence, path, pending decisions) and `executive-brief.md` (short proposal for a sponsor, value per cadence, illustrative screens with sample data).
+- New commands: `/fde:evaluation`, `/fde:brief`.
+- Guidance to keep client material out of shared programme repos.
+
 ## 1.0.0 — 2026-10-29
 
 Rebuilt from the 0.1 field kit into a universal FDE plugin.

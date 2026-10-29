@@ -13,8 +13,8 @@ A situation-aware FDE playbook. The skill classifies each request on six axes, l
 
 ## Contents
 
-- `skills/forward-deployed-engineering/` — router `SKILL.md`, 18 references, 18 templates, 6 scripts, 5 eval cases, guided-tour page template
-- `commands/` — `/fde:start`, `/fde:discover`, `/fde:research`, `/fde:scope`, `/fde:gaps`, `/fde:requirements`, `/fde:prototype`, `/fde:tour`, `/fde:pilot`, `/fde:roi`, `/fde:demo`, `/fde:status`, `/fde:premortem`, `/fde:handoff`
+- `skills/forward-deployed-engineering/` — router `SKILL.md`, 18 references, 20 templates, 6 scripts, 5 eval cases, guided-tour page template
+- `commands/` — `/fde:start`, `/fde:discover`, `/fde:research`, `/fde:scope`, `/fde:gaps`, `/fde:requirements`, `/fde:prototype`, `/fde:tour`, `/fde:pilot`, `/fde:roi`, `/fde:demo`, `/fde:evaluation`, `/fde:brief`, `/fde:status`, `/fde:premortem`, `/fde:handoff`
 - `agents/` — `engagement-reviewer`, `market-researcher`, `demo-reviewer`
 
 ## Scripts

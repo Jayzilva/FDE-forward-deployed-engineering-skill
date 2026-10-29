@@ -49,6 +49,10 @@ Real users, real tasks, real data. Watch them work rather than demo to them. Rec
 
 Structure: the answer (did it work, by the agreed criteria) → the evidence (baseline vs pilot) → what users said and did → the recommendation (scale, adjust, or stop) → what it takes to scale (people, budget, decisions). Show the flow from their messy system to the result, not a feature tour.
 
+## Evaluation and review days
+
+When a programme or steering group reviews the piece, prepare `templates/evaluation-pack.md`. Rank every concern as confident, acceptable risk or doubt, and say what evidence would move it. A reviewer trusts a "doubt" you name more than a risk they find.
+
 ## Exit artifacts
 
 Pilot plan, ROI scorecard, readout deck or doc, decision on scale/adjust/stop.

@@ -14,6 +14,7 @@ The same FDE work changes shape with **who the client is** and **who judges the 
 - Use the five-phase arc as written. The readout and the ROI scorecard carry the engagement.
 - The sponsor is outside your company. Every number in an artifact must come from the client's systems.
 - Product feedback is part of the job. Write up glue that recurs across clients.
+- Before a proposal, give the sponsor a short executive brief (`templates/executive-brief.md`): opportunity, challenge, solution, value at each cadence, illustrative screens with sample data, next step. Mark it "for discussion, not a contractual offer". Reference earlier deliveries without naming those clients.
 
 ## internal
 
@@ -36,6 +37,8 @@ A programme turns FDE practice into a curriculum: each engineer owns a real piec
 - **The demo shows the journey**: problem, spec, build trail, verification, live result. Later demos add learnings, security and cost, and the decision.
 - **Map the piece to the gates.** The roadmap names which gate each slice serves. A slice that serves no gate is scope creep.
 - **Portfolio.** Each artifact records what went wrong and what changed. Reviewers read this more than the happy path.
+- **Evaluation pack.** For a review day, answer the fixed questions in `templates/evaluation-pack.md`: problem, customer wish, research, prototype, success, concerns ranked by confidence, path, pending decisions.
+- **Keep client material out of shared repos.** Programme repos are often shared across a cohort. Store client documents, briefs and evaluation notes in an ignored folder or the client's own space.
 
 ## partner
 

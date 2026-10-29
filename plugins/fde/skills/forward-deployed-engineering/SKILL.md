@@ -68,10 +68,10 @@ FDE value is visible only through artifacts the client can act on. Default to pr
 | Phase | Primary artifacts |
 |---|---|
 | Discover | `site-survey.md`, `discovery-questions.md`, `ecosystem-map.md`, `competitor-profile.md` (one per vendor) |
-| Scope | `delta-map.md`, `use-case-scorecard.md`, `gap-matrix.md`, `requirements.md`, `outcome-card.md`, `adr.md` |
+| Scope | `delta-map.md`, `use-case-scorecard.md`, `gap-matrix.md`, `requirements.md`, `outcome-card.md`, `adr.md`, `executive-brief.md` (proposal for a sponsor) |
 | Prototype | `mock-scope.md`, the prototype as a separate version, a guided tour (`scripts/build_tour.py`) |
 | Build | `adr.md`, `risk-register.md` |
-| Validate | `pilot-plan.md`, `roi-scorecard.md`, `weekly-exec-status.md`, `demo-checklist.md` |
+| Validate | `pilot-plan.md`, `roi-scorecard.md`, `weekly-exec-status.md`, `demo-checklist.md`, `evaluation-pack.md` (programme gate or stakeholder review) |
 | Handoff | `handoff-runbook.md`, `champion-plan.md` |
 
 Fill templates with the user's real facts. Where a fact is unknown, write `TBD — ask <role>`. An invented baseline is worse than a blank, because the client repeats it to their executive. Demo data in prototypes is fictional by design and must say so.

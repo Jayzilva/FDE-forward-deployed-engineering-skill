@@ -29,9 +29,9 @@ flowchart LR
 
 | Part | Contents |
 |---|---|
-| Skill `forward-deployed-engineering` | Router `SKILL.md`, 18 references (one per phase, model, starting point, environment, product, research, delivery style, knowledge base, stakeholders, failure modes, STE writing), 18 artifact templates |
+| Skill `forward-deployed-engineering` | Router `SKILL.md`, 18 references (one per phase, model, starting point, environment, product, research, delivery style, knowledge base, stakeholders, failure modes, STE writing), 20 artifact templates |
 | Scripts (Python 3) | `fde_state.py` engagement state and gate calendar · `qualify.py` use-case scoring · `roi_calc.py` ROI that refuses to run without a baseline · `capture_screens.py` prototype screenshots and control positions · `build_tour.py` guided tour page · `ste_lint.py` plain-English linter for runbooks and agent instructions |
-| Commands | `/fde:start` `/fde:discover` `/fde:research` `/fde:scope` `/fde:gaps` `/fde:requirements` `/fde:prototype` `/fde:tour` `/fde:pilot` `/fde:roi` `/fde:demo` `/fde:status` `/fde:premortem` `/fde:handoff` |
+| Commands | `/fde:start` `/fde:discover` `/fde:research` `/fde:scope` `/fde:gaps` `/fde:requirements` `/fde:prototype` `/fde:tour` `/fde:pilot` `/fde:roi` `/fde:demo` `/fde:evaluation` `/fde:brief` `/fde:status` `/fde:premortem` `/fde:handoff` |
 | Agents | `engagement-reviewer` (pre-mortem and health check) · `market-researcher` (sourced competitor profiles) · `demo-reviewer` (evidence-only gate review) |
 | Evals | Five cases: regulated KYC discovery, Claude Code pilot ROI, air-gapped handoff, internal legacy replacement with an existing prototype, programme gate plan |
 
