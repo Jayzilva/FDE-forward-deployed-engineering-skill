@@ -11,57 +11,65 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="Licence: MIT" src="https://img.shields.io/badge/licence-MIT-FFD23F?style=for-the-badge&labelColor=111111"></a>
-  <a href="CHANGELOG.md"><img alt="Version 1.4.0" src="https://img.shields.io/badge/version-1.4.0-FF5DA2?style=for-the-badge&labelColor=111111"></a>
-  <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-7EE0C3?style=for-the-badge&labelColor=111111">
-  <img alt="Agent skill" src="https://img.shields.io/badge/agent-skill-B69CFF?style=for-the-badge&labelColor=111111">
-  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-FF7A1A?style=for-the-badge&labelColor=111111">
-  <img alt="Templates: 25" src="https://img.shields.io/badge/templates-25-B5F23D?style=for-the-badge&labelColor=111111">
+  <a href="LICENSE"><img alt="Licence: MIT" src="https://img.shields.io/badge/LICENCE-MIT-C8F53B?style=flat-square&labelColor=1B1C1E"></a>
+  <a href="CHANGELOG.md"><img alt="Version 1.4.0" src="https://img.shields.io/badge/SERIES-1.4.0-ECECEA?style=flat-square&labelColor=1B1C1E"></a>
+  <img alt="Claude Code plugin" src="https://img.shields.io/badge/CLAUDE_CODE-PLUGIN-8B8E93?style=flat-square&labelColor=1B1C1E">
+  <img alt="Agent skill" src="https://img.shields.io/badge/AGENT-SKILL-8B8E93?style=flat-square&labelColor=1B1C1E">
+  <img alt="Python 3.9+" src="https://img.shields.io/badge/PYTHON-3.9%2B-8B8E93?style=flat-square&labelColor=1B1C1E">
+  <img alt="Templates: 25" src="https://img.shields.io/badge/TEMPLATES-25-8B8E93?style=flat-square&labelColor=1B1C1E">
 </p>
 
 # Forward Deployed Engineering (FDE) skill and Claude Code plugin
 
 **FDE is a free, open-source Claude Code plugin and agent skill for Forward Deployed Engineers.** It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style). Then it produces the artifact that situation needs: discovery questions, a gap matrix, requirement IDs, a prototype with an FSPARK feedback tour, a value ledger that separates claims from client-accepted results, a pilot ROI scorecard, a demo checklist or a handoff runbook. It works for client deployments, internal platform replacements and FDE training programmes.
 
-> [!TIP]
-> **Install in Claude Code**
+> [!NOTE]
+> **`INSTALL`** &nbsp;Claude Code
 > ```
 > /plugin marketplace add Jayzilva/FDE-forward-deployed-engineering-skill
 > /plugin install fde@forward-deployed-engineering
 > ```
 
-**`CONTENTS`** &nbsp; [What is FDE](#what-is-forward-deployed-engineering) · [How it works](#how-it-works-classify-then-act) · [Six phases](#the-six-phases) · [FSPARK](#fspark-the-feedback-mechanism) · [Evidence ledger](#evidence-ledger-claim-or-accepted) · [What's in the box](#whats-in-the-box) · [Install](#install) · [Quick start](#quick-start) · [FAQ](#faq) · [Key facts](#key-facts)
+**`INDEX`** &nbsp; [What is FDE](#what-is-forward-deployed-engineering) · [How it works](#how-it-works-classify-then-act) · [Six phases](#the-six-phases) · [FSPARK](#fspark-the-feedback-mechanism) · [Evidence ledger](#evidence-ledger-claim-or-accepted) · [What's in the box](#whats-in-the-box) · [Install](#install) · [Quick start](#quick-start) · [FAQ](#faq) · [Key facts](#key-facts)
 
 <img src="docs/images/divider.svg" alt="" width="100%">
 
-## What is Forward Deployed Engineering?
+<a id="what-is-forward-deployed-engineering"></a>
+
+## `01` &nbsp;What is Forward Deployed Engineering?
 
 **A Forward Deployed Engineer (FDE) embeds with one client, team or programme and owns a deployment end to end, from the first discovery call to the day the old way is switched off.** The FDE closes *the Delta*: the gap between what a product does out of the box and what this client needs to succeed. About half the job is integration code. The other half is judgment about people, scope, data and risk, and that half is where most engagements fail.
 
 FDE is a process, not a checklist. The right next move depends on the project, the audience and where the work starts. This plugin turns that judgment into a repeatable playbook.
 
-## How it works: classify, then act
+<a id="how-it-works-classify-then-act"></a>
+
+## `02` &nbsp;How it works: classify, then act
 
 <p align="center"><img src="docs/images/six-axes.svg" alt="The six classification axes: phase, environment, product, engagement model, starting point and delivery style" width="100%"></p>
 
 | | Axis | Values | Why it matters |
 |---|---|---|---|
-| 🟨 `01` | **Phase** | discover · scope · prototype · build · validate · handoff | Decides the playbook and the artifact |
-| 🟩 `02` | **Environment** | cloud · regulated · on-prem · air-gapped | Moves security, network and accreditation work to week one |
-| 🟥 `03` | **Product** | ai-agent · claude-code · data-platform · api-integration · business-app | Sets the metrics, evals and handoff contents |
-| 🟪 `04` | **Engagement model** | external · internal · programme · partner | Decides who signs off and what "done" means |
-| 🟧 `05` | **Starting point** | greenfield · prototype-exists · legacy-replace · rescue · scale-out | Changes the first two weeks the most |
-| 🟩 `06` | **Delivery style** | classic (tickets) · spec-driven (spec, plan, build, verify) | Sets the tracking unit, measures and AI cost model |
+| `01` | **Phase** | discover · scope · prototype · build · validate · handoff | Decides the playbook and the artifact |
+| `02` | **Environment** | cloud · regulated · on-prem · air-gapped | Moves security, network and accreditation work to week one |
+| `03` | **Product** | ai-agent · claude-code · data-platform · api-integration · business-app | Sets the metrics, evals and handoff contents |
+| `04` | **Engagement model** | external · internal · programme · partner | Decides who signs off and what "done" means |
+| `05` | **Starting point** | greenfield · prototype-exists · legacy-replace · rescue · scale-out | Changes the first two weeks the most |
+| `06` | **Delivery style** | classic (tickets) · spec-driven (spec, plan, build, verify) | Sets the tracking unit, measures and AI cost model |
 
 The skill infers each axis from your request and your repository, states its assumptions in one line, and loads only the playbook that fits. Every answer ends with an **FDE check**: the situation, the biggest risk now, and one next move with an owner and a date.
 
-## The six phases
+<a id="the-six-phases"></a>
+
+## `03` &nbsp;The six phases
 
 <p align="center"><img src="docs/images/lifecycle.svg" alt="Six FDE phases with the artifacts each produces, and a client feedback loop from prototype back to scope" width="100%"></p>
 
 <img src="docs/images/divider.svg" alt="" width="100%">
 
-## FSPARK: the feedback mechanism
+<a id="fspark-the-feedback-mechanism"></a>
+
+## `04` &nbsp;FSPARK: the feedback mechanism
 
 <p align="center"><img src="docs/images/fspark.svg" alt="FSPARK: Feedback-based Spotlight Presentation, Assessment, Response and Knowledge" width="100%"></p>
 
@@ -69,10 +77,10 @@ The skill infers each axis from your request and your repository, states its ass
 
 | | Step | What the viewer does | What you get |
 |---|---|---|---|
-| 🟨 `P` | **Presentation** | Follows a spotlight tour. Each stop opens the right screen and highlights one feature | A clear picture of what will be built |
-| 🟥 `A` | **Assessment** | Rates each feature: looks right, needs changes, not needed, not sure | Reaction counts per feature and requirement ID |
-| 🟩 `R` | **Response** | Adds a note per feature and answers two closing questions | Their words, tied to the feature |
-| 🟢 `K` | **Knowledge** | Reviews everything, previews and edits a Markdown file, downloads or copies it | A feedback file with a team-response table |
+| `P` | **Presentation** | Follows a spotlight tour. Each stop opens the right screen and highlights one feature | A clear picture of what will be built |
+| `A` | **Assessment** | Rates each feature: looks right, needs changes, not needed, not sure | Reaction counts per feature and requirement ID |
+| `R` | **Response** | Adds a note per feature and answers two closing questions | Their words, tied to the feature |
+| `K` | **Knowledge** | Reviews everything, previews and edits a Markdown file, downloads or copies it | A feedback file with a team-response table |
 
 <p align="center">
   <img src="docs/images/fspark-stop.png" alt="FSPARK stop: a spotlighted feature with reaction chips and a note" width="32%">
@@ -100,7 +108,9 @@ The output is **one self-contained HTML file**: no external requests, works offl
 
 <img src="docs/images/divider.svg" alt="" width="100%">
 
-## Evidence ledger: claim or accepted?
+<a id="evidence-ledger-claim-or-accepted"></a>
+
+## `05` &nbsp;Evidence ledger: claim or accepted?
 
 <p align="center"><img src="docs/images/evidence-ledger.svg" alt="Evidence ledger: five delivery states from implemented to accepted, and a value-ledger row that counts as accepted only with a named signer, date and source" width="100%"></p>
 
@@ -108,11 +118,11 @@ The output is **one self-contained HTML file**: no external requests, works offl
 
 | | State | Evidence that proves it |
 |---|---|---|
-| ⬜ `01` | **Implemented** | A commit, PR or change ID |
-| 🟩 `02` | **Verified** | Test output or eval score on a named revision and environment |
-| 🟪 `03` | **Deployed** | A release record in the client's environment |
-| 🟨 `04` | **Measured** | Baseline and current value, method, sample, date |
-| 🟢 `05` | **Accepted** | A named client-side person, a date and a source someone else can open |
+| `01` | **Implemented** | A commit, PR or change ID |
+| `02` | **Verified** | Test output or eval score on a named revision and environment |
+| `03` | **Deployed** | A release record in the client's environment |
+| `04` | **Measured** | Baseline and current value, method, sample, date |
+| `05` | **Accepted** | A named client-side person, a date and a source someone else can open |
 
 - **Value ledger.** One row per promised outcome. A row without a measured value, a named signer and a source stays a **claim**.
 - **Decision log.** Only an explicit `[approved: Name YYYY-MM-DD]` stamp records client approval. "Agreed" in the prose does not.
@@ -130,7 +140,9 @@ python scripts/evidence_check.py --export fde/x.md     # share a file with <priv
 
 <img src="docs/images/divider.svg" alt="" width="100%">
 
-## What's in the box
+<a id="whats-in-the-box"></a>
+
+## `06` &nbsp;What's in the box
 
 <p align="center"><img src="docs/images/toolkit.svg" alt="One router skill, 23 references, 25 templates, 9 scripts, 21 commands, 3 agents and 9 eval cases" width="100%"></p>
 
@@ -158,7 +170,9 @@ python scripts/evidence_check.py --export fde/x.md     # share a file with <priv
 | `evidence_check.py` | Value-ledger acceptance check, decision approval stamps, stale stakeholder signals, overdue commitments, private-text export | stdlib |
 | `ste_lint.py` | Lints runbooks, CLAUDE.md files and acceptance criteria for plain, unambiguous English | stdlib |
 
-## Install
+<a id="install"></a>
+
+## `07` &nbsp;Install
 
 **Claude Code (plugin, recommended)**
 ```
@@ -172,7 +186,9 @@ python scripts/evidence_check.py --export fde/x.md     # share a file with <priv
 
 Requirements: Python 3.9 or later. `capture_screens.py` also needs Playwright (`uvx --with playwright python ...` or `pip install playwright`).
 
-## Quick start
+<a id="quick-start"></a>
+
+## `08` &nbsp;Quick start
 
 ```
 /fde:start Acme Logistics — dispatch agent pilot regulated ai-agent external greenfield
@@ -189,7 +205,9 @@ Requirements: Python 3.9 or later. `capture_screens.py` also needs Playwright (`
 
 You can also describe the situation in plain words. The skill triggers on deployment, pilot, prototype, legacy migration, gap analysis, meeting debrief and programme-gate requests even when you do not say "FDE". It stays out of plain code edits.
 
-## Principles
+<a id="principles"></a>
+
+## `09` &nbsp;Principles
 
 1. Find the system of record before writing code.
 2. Run what exists before you write requirements.
@@ -202,7 +220,9 @@ You can also describe the situation in plain words. The skill triggers on deploy
 9. Never invent client facts. Write `TBD — ask <role>`.
 10. The goal is to become unnecessary.
 
-## FAQ
+<a id="faq"></a>
+
+## `10` &nbsp;FAQ
 
 ### What does a Forward Deployed Engineer do?
 A Forward Deployed Engineer works inside a client's environment to make a product succeed there. They run discovery, scope the smallest valuable slice, build integrations and prototypes, prove value with a pilot, and hand the system to an owner who keeps it running.
@@ -234,7 +254,9 @@ Yes. Upload the `.skill` file to Claude.ai or Claude desktop, or copy the skill 
 ### Is it tied to one company or vendor?
 No. It is MIT-licensed and vendor-neutral. All examples use fictional companies.
 
-## Key facts
+<a id="key-facts"></a>
+
+## `11` &nbsp;Key facts
 
 | | |
 |---|---|
@@ -247,7 +269,9 @@ No. It is MIT-licensed and vendor-neutral. All examples use fictional companies.
 | Works with | Claude Code, Claude.ai, Claude desktop, any agent that reads skills |
 | Machine-readable summary | [`llms.txt`](llms.txt) |
 
-## Develop and contribute
+<a id="develop-and-contribute"></a>
+
+## `12` &nbsp;Develop and contribute
 
 ```
 python tools/package.py        # validate manifests and links, run script self-tests, build dist/*.skill
@@ -256,10 +280,12 @@ claude plugin eval plugins/fde/skills/forward-deployed-engineering --allow-tools
 
 Contributions are welcome: new environment or product sections, engagement models, templates and eval cases. Keep `SKILL.md` under 500 lines and its description under 1,024 characters. Keep every example fictional. Give each new eval case a critical-failure line.
 
-## Credits
+<a id="credits"></a>
+
+## `13` &nbsp;Credits
 
 Builds on public FDE material (Awesome-FDE-Roadmap, GeeksforGeeks FDE roadmap, Anthropic's delivery methodology outline) and on field practice from real programme and client deployments. The evidence ledger, debrief, assumptions and change-safety methods in 1.4 adapt ideas from [suboss87/fdeops](https://github.com/suboss87/fdeops) (MIT); the text and code here are written fresh. `ste_lint.py` is vendored from [danyuchn/asd-ste100-skill](https://github.com/danyuchn/asd-ste100-skill) (MIT, see `scripts/LICENSE-asd-ste100`).
 
 <img src="docs/images/divider.svg" alt="" width="100%">
 
-<p align="center"><b>MIT licence</b> · built for the people who stay until it runs without them.</p>
+<p align="center"><sub><code>SHEET 00 / 07</code> &nbsp;·&nbsp; MIT LICENCE &nbsp;·&nbsp; BUILT FOR THE PEOPLE WHO STAY UNTIL IT RUNS WITHOUT THEM</sub></p>

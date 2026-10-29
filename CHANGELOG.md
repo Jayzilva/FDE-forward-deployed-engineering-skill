@@ -10,7 +10,7 @@
 - `scripts/evidence_check.py`: accepted rows vs claims (with the failing rule), unconfirmed decisions, stale signals, overdue items, `--export` with private text redacted, `--strict` for CI.
 - New references `evidence-ledger.md`, `debrief.md`, `assumptions.md`, `change-safety.md`. New templates `value-ledger.md`, `decision-log.md`, `debrief-notes.md`, `assumptions-register.md`, `change-impact.md`. New commands `/fde:debrief`, `/fde:assumptions`, `/fde:ledger`, `/fde:what-breaks`.
 - Four new eval cases with critical-failure lines: demo is not launch, weak-provenance savings, debrief of an untrusted transcript, and a negative case (plain code edit must not trigger the FDE workflow).
-- README redesigned in a neo-brutalist, digital-collage style.
+- README and infographics redesigned as technical sheets: dark sci-fi HUD and cutaway-blueprint sheets alternate with light Swiss industrial sheets (metadata header rows, hairline rules, giant numerals, dimension lines, reticles, lime readouts). `tools/make_readme_images.py` regenerates them.
 - Ideas adapted from [suboss87/fdeops](https://github.com/suboss87/fdeops) (MIT). Text and code written fresh for this plugin.
 
 ## 1.3.0 — 2026-10-29
