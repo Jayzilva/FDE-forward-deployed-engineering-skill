@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 — 2026-10-29
+
+- Evaluation pack lists supporting artifacts in reading order and puts the decisions needed at the top.
+
 ## 1.1.0 — 2026-10-29
 
 - New templates: `evaluation-pack.md` (programme gate or stakeholder review: problem, customer wish, research, prototype, success, concerns ranked by confidence, path, pending decisions) and `executive-brief.md` (short proposal for a sponsor, value per cadence, illustrative screens with sample data).
