@@ -61,10 +61,15 @@ with tempfile.TemporaryDirectory() as tmp:
     check(r.returncode == 0 and json.loads(r.stdout)["screens"], "build_tour.py --example failed")
     page = pathlib.Path(tmp) / "p.html"; page.write_text("<html><head></head><body><div data-tour='a'>x</div></body></html>")
     steps = pathlib.Path(tmp) / "s.json"; steps.write_text(json.dumps({"title": "T", "steps": [{"target": "[data-tour='a']", "title": "A", "body": "B"}]}))
-    r = run(sys.executable, str(SKILL / "scripts" / "add_spotlight.py"), str(page), str(steps), "--out", str(pathlib.Path(tmp) / "o.html"))
+    r = run(sys.executable, str(SKILL / "scripts" / "add_fspark.py"), str(page), str(steps), "--out", str(pathlib.Path(tmp) / "o.html"))
     out_html = (pathlib.Path(tmp) / "o.html").read_text(encoding="utf-8") if r.returncode == 0 else ""
     inline = out_html.split('<script>')[-1] if out_html else ""
-    check(r.returncode == 0 and 'id="fde-tour"' in out_html and inline.count("</script") == 1, "add_spotlight.py output is broken: " + r.stderr)
+    check(r.returncode == 0 and 'id="fspark"' in out_html and inline.count("</script") == 1, "add_fspark.py output is broken: " + r.stderr)
+    fbf = pathlib.Path(tmp) / "f.md"
+    fbf.write_text("# Feedback: X\n\n- **Reviewer:** A\n\n## Feedback by feature\n\n### 1. One\n\n- **Requirement:** R-1\n- **Reaction:** Needs changes\n- **Note:** More\n\n## Delivery team response\n", encoding="utf-8")
+    r = run(sys.executable, str(SKILL / "scripts" / "merge_feedback.py"), str(fbf), "--out", str(pathlib.Path(tmp) / "sum.md"))
+    summ = (pathlib.Path(tmp) / "sum.md").read_text(encoding="utf-8") if r.returncode == 0 else ""
+    check("| 1 | One | R-1 | 0 | 1 |" in summ, "merge_feedback.py output is broken: " + r.stderr + summ[:200])
     r = run(sys.executable, str(SKILL / "scripts" / "ste_lint.py"), str(SKILL / "assets" / "templates" / "handoff-runbook.md"))
     check(r.returncode == 0, "handoff-runbook template has hard STE violations:\n" + r.stdout[-800:])
 

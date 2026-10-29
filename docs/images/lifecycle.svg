@@ -21,7 +21,7 @@
       <text x="234" y="252" font-size="12">02</text><text x="234" y="284" fill="#EDEDED" font-size="24" font-weight="500">Scope</text>
       <text x="234" y="318">Gap matrix</text><text x="234" y="340">Requirement IDs</text><text x="234" y="362">Outcome card</text><text x="234" y="384">Migration ADR</text><text x="234" y="406">Executive brief</text>
       <text x="408" y="252" font-size="12">03</text><text x="408" y="284" fill="#EDEDED" font-size="24" font-weight="500">Prototype</text>
-      <text x="408" y="318">Separate version</text><text x="408" y="340" fill="#EDEDED">Spotlight tour</text><text x="408" y="362">Guided tour document</text><text x="408" y="384">Notes loop</text>
+      <text x="408" y="318">Separate version</text><text x="408" y="340" fill="#EDEDED">FSPARK feedback</text><text x="408" y="362">Guided tour document</text><text x="408" y="384">Notes loop</text>
       <text x="582" y="252" font-size="12">04</text><text x="582" y="284" fill="#EDEDED" font-size="24" font-weight="500">Build</text>
       <text x="582" y="318">One spec per change</text><text x="582" y="340">Evals</text><text x="582" y="362">ADR</text><text x="582" y="384">Risk register</text>
       <text x="756" y="252" font-size="12">05</text><text x="756" y="284" fill="#EDEDED" font-size="24" font-weight="500">Validate</text>

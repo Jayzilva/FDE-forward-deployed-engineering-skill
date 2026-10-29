@@ -7,9 +7,9 @@
       "name": "fde",
       "source": "./plugins/fde",
       "description": "Classify an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style), then produce the matching FDE artifact: discovery, gap analysis, requirements, prototype and guided tour, pilot and ROI, demo gate review, and handoff.",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "category": "productivity",
-      "tags": ["spotlight-tour", "fde", "forward-deployed-engineering", "consulting", "delivery", "prototype", "pilot", "roi", "handoff"]
+      "tags": ["fspark", "feedback", "spotlight-tour", "fde", "forward-deployed-engineering", "consulting", "delivery", "prototype", "pilot", "roi", "handoff"]
     }
   ]
 }

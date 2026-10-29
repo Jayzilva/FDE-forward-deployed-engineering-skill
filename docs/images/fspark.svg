@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-labelledby="t d">
+  <title id="t">FSPARK: Feedback-based Spotlight Presentation, Assessment, Response and Knowledge</title>
+  <desc id="d">Four steps: presentation with a spotlight tour, assessment with a reaction per feature, response with notes and closing questions, knowledge as a Markdown feedback file merged across reviewers.</desc>
+  <rect width="1200" height="640" fill="#1C1D1F"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text transform="translate(1158 40) rotate(90)" fill="#EDEDED" font-size="13">05.   fspark</text>
+    <text x="56" y="118" fill="#EDEDED" font-size="96" font-weight="500" letter-spacing="-3">FSPARK</text>
+    <text x="440" y="118" fill="#8A8D91" font-size="40" font-weight="300" letter-spacing="-1">_feedback mechanism</text>
+    <text x="60" y="160" fill="#8A8D91" font-size="15">Feedback-based Spotlight Presentation, Assessment, Response &amp; Knowledge</text>
+    <text x="820" y="200" fill="#8A8D91" font-size="13">*One self-contained HTML file. No external</text>
+    <text x="820" y="218" fill="#8A8D91" font-size="13">requests. Works offline, in a Claude artifact,</text>
+    <text x="820" y="236" fill="#8A8D91" font-size="13">and in viewers that size the frame to the page.</text>
+    <line x1="60" y1="268" x2="1100" y2="268" stroke="#EDEDED" stroke-width="1.5"/>
+    <g font-size="14" fill="#8A8D91">
+      <text x="60" y="306" font-size="12">P</text><text x="60" y="346" fill="#EDEDED" font-size="30" font-weight="500">Presentation</text>
+      <text x="60" y="378">Spotlight tour. One stop per</text><text x="60" y="398">feature, screens switch for you.</text>
+      <text x="320" y="306" font-size="12">A</text><text x="320" y="346" fill="#EDEDED" font-size="30" font-weight="500">Assessment</text>
+      <text x="320" y="378">Looks right · needs changes</text><text x="320" y="398">not needed · not sure</text>
+      <text x="580" y="306" font-size="12">R</text><text x="580" y="346" fill="#EDEDED" font-size="30" font-weight="500">Response</text>
+      <text x="580" y="378">A note per feature and</text><text x="580" y="398">two closing questions.</text>
+      <text x="840" y="306" font-size="12">K</text><text x="840" y="346" fill="#EDEDED" font-size="30" font-weight="500">Knowledge</text>
+      <text x="840" y="378">Markdown file: preview, edit,</text><text x="840" y="398">download, copy, merge.</text>
+    </g>
+    <g stroke="#3A3D41"><line x1="300" y1="290" x2="300" y2="410"/><line x1="560" y1="290" x2="560" y2="410"/><line x1="820" y1="290" x2="820" y2="410"/></g>
+    <line x1="60" y1="450" x2="1100" y2="450" stroke="#3A3D41"/>
+    <g font-size="30" fill="#EDEDED">
+      <text x="60" y="510">4.00<tspan font-size="11" fill="#8A8D91" dx="6">reactions per feature</tspan></text>
+      <text x="400" y="510">1.00<tspan font-size="11" fill="#8A8D91" dx="6">markdown file per reviewer</tspan></text>
+      <text x="780" y="510">0.00<tspan font-size="11" fill="#8A8D91" dx="6">external requests</tspan></text>
+    </g>
+    <rect x="60" y="550" width="300" height="32" fill="#B5F23D"/>
+    <text x="72" y="572" fill="#1C1D1F" font-size="15" font-weight="500">add_fspark.py : merge_feedback.py</text>
+    <text x="400" y="572" fill="#8A8D91" font-size="13">Team response table in every file. Answer each row, send it back with vN+1.</text>
+  </g>
+</svg>

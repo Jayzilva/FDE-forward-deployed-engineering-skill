@@ -1,6 +1,6 @@
 <!--
   Forward Deployed Engineering (FDE) skill and Claude Code plugin.
-  Keywords: forward deployed engineer, forward deployed engineering, FDE playbook, FDE skill, Claude Code plugin,
+  Keywords: FSPARK, feedback-based spotlight tour, prototype feedback, user feedback collection, forward deployed engineer, forward deployed engineering, FDE playbook, FDE skill, Claude Code plugin,
   Claude skill, agent skill, customer deployment, client discovery, gap analysis, prototype, guided product tour,
   spotlight tour, pilot, ROI, handoff runbook, legacy system replacement, strangler migration, spec-driven delivery.
 -->
@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/licence-MIT-1C1D1F?style=flat-square&labelColor=1C1D1F&color=B5F23D"></a>
-  <a href=".claude-plugin/marketplace.json"><img alt="Version 1.2.0" src="https://img.shields.io/badge/version-1.2.0-1C1D1F?style=flat-square&labelColor=1C1D1F&color=EDEDED"></a>
+  <a href=".claude-plugin/marketplace.json"><img alt="Version 1.3.0" src="https://img.shields.io/badge/version-1.3.0-1C1D1F?style=flat-square&labelColor=1C1D1F&color=EDEDED"></a>
   <img alt="Claude Code plugin" src="https://img.shields.io/badge/claude_code-plugin-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
   <img alt="Agent skill" src="https://img.shields.io/badge/agent-skill-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
   <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-1C1D1F?style=flat-square&labelColor=1C1D1F&color=8A8D91">
@@ -20,7 +20,7 @@
 
 # Forward Deployed Engineering (FDE) skill and Claude Code plugin
 
-**FDE is a free, open-source Claude Code plugin and agent skill for Forward Deployed Engineers.** It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style). Then it produces the artifact that situation needs: discovery questions, a gap matrix, requirement IDs, a prototype with a guided spotlight tour, a pilot ROI scorecard, a demo checklist or a handoff runbook. It works for client deployments, internal platform replacements and FDE training programmes.
+**FDE is a free, open-source Claude Code plugin and agent skill for Forward Deployed Engineers.** It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style). Then it produces the artifact that situation needs: discovery questions, a gap matrix, requirement IDs, a prototype with an FSPARK feedback tour, a pilot ROI scorecard, a demo checklist or a handoff runbook. It works for client deployments, internal platform replacements and FDE training programmes.
 
 > **Install in Claude Code**
 > ```
@@ -28,7 +28,7 @@
 > /plugin install fde@forward-deployed-engineering
 > ```
 
-**Contents:** [What is FDE](#what-is-forward-deployed-engineering) · [How it works](#how-it-works-classify-then-act) · [The six phases](#the-six-phases) · [Spotlight tours](#guided-spotlight-tours-show-the-client-what-you-will-build) · [What is included](#what-is-included) · [Install](#install) · [Quick start](#quick-start) · [FAQ](#faq) · [Key facts](#key-facts)
+**Contents:** [What is FDE](#what-is-forward-deployed-engineering) · [How it works](#how-it-works-classify-then-act) · [The six phases](#the-six-phases) · [FSPARK feedback](#fspark-the-feedback-mechanism) · [What is included](#what-is-included) · [Install](#install) · [Quick start](#quick-start) · [FAQ](#faq) · [Key facts](#key-facts)
 
 ---
 
@@ -57,38 +57,54 @@ The skill infers each axis from your request and your repository, states its ass
 
 <p align="center"><img src="docs/images/lifecycle.svg" alt="Six FDE phases with the artifacts each produces, and a client feedback loop from prototype back to scope" width="100%"></p>
 
-## Guided spotlight tours: show the client what you will build
+## FSPARK: the feedback mechanism
 
-A clickable prototype finds wrong requirements in days. A **spotlight tour inside the prototype** makes it self-explanatory. Each stop opens the right screen, highlights one new feature, explains it in plain words and lets the viewer leave a note. At the end the viewer copies every note and sends it back.
+<p align="center"><img src="docs/images/fspark.svg" alt="FSPARK: Feedback-based Spotlight Presentation, Assessment, Response and Knowledge" width="100%"></p>
 
-<p align="center"><img src="docs/images/spotlight-step.png" alt="Spotlight tour stop highlighting invoice drafts in a sample field-service prototype, with a note from the viewer" width="80%"></p>
+**FSPARK (Feedback-based Spotlight Presentation, Assessment, Response & Knowledge) turns a prototype into a structured feedback session.** It shows the people who will use the product exactly what was built, asks what they think of each feature, and returns their answers as a Markdown file the team acts on.
+
+| | Step | What the viewer does | What you get |
+|---|---|---|---|
+| `P` | **Presentation** | Follows a spotlight tour. Each stop opens the right screen and highlights one feature | A clear picture of what will be built |
+| `A` | **Assessment** | Rates each feature: looks right, needs changes, not needed, not sure | Reaction counts per feature and requirement ID |
+| `R` | **Response** | Adds a note per feature and answers two closing questions | Their words, tied to the feature |
+| `K` | **Knowledge** | Reviews everything, previews and edits a Markdown file, downloads or copies it | A feedback file with a team-response table |
+
+<p align="center">
+  <img src="docs/images/fspark-stop.png" alt="FSPARK stop: a spotlighted feature with reaction chips and a note" width="32%">
+  <img src="docs/images/fspark-review.png" alt="FSPARK review: reaction totals and every stop with its note" width="32%">
+  <img src="docs/images/fspark-file.png" alt="FSPARK feedback file: Markdown preview with download and copy" width="32%">
+</p>
 
 ```
-python scripts/add_spotlight.py prototype.html steps.json --out tour.html
+python scripts/add_fspark.py prototype.html config.json --out tour.html      # build
+python scripts/merge_feedback.py feedback/*.md --out feedback-summary.md      # close the loop
 ```
 
-The output is **one self-contained HTML file**: no external requests, works offline, safe to email. Then share it through the channel that fits the audience:
+The output is **one self-contained HTML file**: no external requests, works offline. Inside a Claude artifact, publish with capabilities `{"downloads": true}` so the download button saves the file. Elsewhere it downloads directly, and Copy always works.
 
 <p align="center"><img src="docs/images/prototype-loop.svg" alt="Prototype feedback loop: build, spotlight, check, share by audience, notes, triage, requirements, next version" width="100%"></p>
 
 | Audience | Channel | Feedback comes back as |
 |---|---|---|
-| Inside your organisation | Claude artifact shared with the organisation | Artifact comments and copied notes |
-| Outside, public links allowed | Claude artifact with "anyone with the link" | Copied notes in a reply |
-| Outside, no Claude access | The single HTML file by email, portal or file share | Copied notes in a reply |
-| Regulated or confidential | The single HTML file through the client's approved channel only | Copied notes, stored with engagement records |
+| Inside your organisation | Claude artifact shared with the organisation | Downloaded feedback file, or artifact comments |
+| Outside, public links allowed | Claude artifact with "anyone with the link" | Downloaded or copied feedback file |
+| Outside, no Claude access | The single HTML file by email, portal or file share | Downloaded feedback file |
+| Regulated or confidential | The single HTML file through the client's approved channel only | Feedback file, stored with engagement records |
 
-Try it: open [`examples/spotlight-demo/index.html`](examples/spotlight-demo/index.html) in a browser. It is a fictional field-service prototype with a six-stop tour.
+**Close the loop:** merge every reviewer's file, decide each row (confirms, change, new requirement, out of scope), update the requirement IDs, fill the team-response column and send it back with the next version.
+
+Try it: open [`examples/fspark-demo/index.html`](examples/fspark-demo/index.html) in a browser. It is a fictional field-service prototype with a six-stop FSPARK tour.
 
 ## What is included
 
 | Part | Count | Highlights |
 |---|---|---|
 | Router skill `forward-deployed-engineering` | 1 | Classifies on six axes. Loads only the matching playbook. Under 500 lines |
-| References | 18 | One per phase, engagement model, starting point, environment, product, market research, delivery style, knowledge base, stakeholders, failure modes, plain-English writing |
+| References | 19 | One per phase, engagement model, starting point, environment, product, market research, delivery style, knowledge base, FSPARK, stakeholders, failure modes, plain-English writing |
 | Templates | 20 | Site survey, system map, competitor profile, gap matrix, requirements with trace, outcome card, executive brief, prototype scope, ADR, risk register, pilot plan, ROI scorecard, demo checklist, evaluation pack, handoff runbook and more |
-| Scripts (Python 3) | 7 | `fde_state.py` · `qualify.py` · `roi_calc.py` · `capture_screens.py` · `build_tour.py` · `add_spotlight.py` · `ste_lint.py` |
-| Slash commands | 17 | `/fde:start` `/fde:discover` `/fde:research` `/fde:scope` `/fde:gaps` `/fde:requirements` `/fde:brief` `/fde:prototype` `/fde:spotlight` `/fde:tour` `/fde:pilot` `/fde:roi` `/fde:demo` `/fde:evaluation` `/fde:status` `/fde:premortem` `/fde:handoff` |
+| Scripts (Python 3) | 8 | `fde_state.py` · `qualify.py` · `roi_calc.py` · `capture_screens.py` · `build_tour.py` · `add_fspark.py` · `merge_feedback.py` · `ste_lint.py` |
+| Slash commands | 17 | `/fde:start` `/fde:discover` `/fde:research` `/fde:scope` `/fde:gaps` `/fde:requirements` `/fde:brief` `/fde:prototype` `/fde:fspark` `/fde:tour` `/fde:pilot` `/fde:roi` `/fde:demo` `/fde:evaluation` `/fde:status` `/fde:premortem` `/fde:handoff` |
 | Agents | 3 | `engagement-reviewer` (pre-mortem) · `market-researcher` (sourced competitor profiles) · `demo-reviewer` (evidence-only gate review) |
 | Eval cases | 5 | Regulated KYC discovery · Claude Code pilot ROI · air-gapped handoff · internal legacy replacement · programme gate plan |
 
@@ -101,7 +117,8 @@ Try it: open [`examples/spotlight-demo/index.html`](examples/spotlight-demo/inde
 | `roi_calc.py` | Conservative and measured ROI. Refuses to run without a baseline | stdlib |
 | `capture_screens.py` | Screenshots every screen of a prototype and records control positions | Playwright |
 | `build_tour.py` | Builds a guided tour document: annotated screenshots, controls, gaps per screen | stdlib |
-| `add_spotlight.py` | Adds an in-product spotlight tour with per-stop notes to any HTML prototype | stdlib |
+| `add_fspark.py` | Adds FSPARK to any HTML prototype: spotlight tour, a reaction and note per feature, Markdown feedback file | stdlib |
+| `merge_feedback.py` | Merges FSPARK feedback files from many reviewers into one summary with a team-response table | stdlib |
 | `ste_lint.py` | Lints runbooks, CLAUDE.md files and acceptance criteria for plain, unambiguous English | stdlib |
 
 ## Install
@@ -125,7 +142,7 @@ Requirements: Python 3.9 or later. `capture_screens.py` also needs Playwright (`
 /fde:research Kantata, Rocketlane, Productive
 /fde:gaps
 /fde:prototype ./mock/index.html
-/fde:spotlight ./mock/v2/index.html external-file
+/fde:fspark ./mock/v2/index.html external-file
 /fde:demo "Demo 1" fde/outcome-card.md specs/012/verify-report.md
 ```
 
@@ -135,7 +152,7 @@ You can also describe the situation in plain words. The skill triggers on deploy
 
 1. Find the system of record before writing code.
 2. Run what exists before you write requirements.
-3. Show, then build. A spotlight tour turns a prototype into a conversation.
+3. Show, then build. FSPARK turns a prototype into a structured feedback session.
 4. Replace legacy systems domain by domain, and keep what they do well.
 5. Track the change, not the ticket. Done means the old way is switched off.
 6. Evidence over explanation. A gate item passes when an artifact exists and someone else signs it.
@@ -154,7 +171,13 @@ A solutions engineer usually stops at the sale and the demo. A consultant often 
 Client-ready artifacts: site surveys, system landscape maps, competitor profiles, gap matrices, requirement IDs with a trace table, outcome cards, executive briefs, prototype scopes, spotlight tours, ADRs, risk registers, pilot plans, ROI scorecards, demo checklists, evaluation packs and handoff runbooks.
 
 ### How do I show a client what we are going to build?
-Build a clickable prototype on sample data. Run `/fde:spotlight` to add a guided tour with one stop per new feature. Share it as a Claude artifact inside your organisation, as a public link if your policy allows, or as one offline HTML file for outside clients. Turn each note that comes back into a requirement change.
+Build a clickable prototype on sample data. Run `/fde:fspark` to add FSPARK: a spotlight tour with one stop per new feature, a reaction and a note on each, and a Markdown feedback file at the end. Share it as a Claude artifact inside your organisation, as a public link if your policy allows, or as one offline HTML file for outside clients.
+
+### What is FSPARK?
+FSPARK stands for Feedback-based Spotlight Presentation, Assessment, Response & Knowledge. It is the plugin's feedback mechanism: Presentation (a spotlight tour of new features), Assessment (a reaction on each feature), Response (notes and closing questions) and Knowledge (a Markdown feedback file, merged across reviewers, with a team-response table).
+
+### How do I collect feedback from many reviewers?
+Each reviewer downloads or copies their own feedback file. Run `merge_feedback.py` on all of them to get one summary: reaction counts per feature, every note with its reviewer, and a delivery-team response table.
 
 ### Does it work for internal projects and FDE training programmes?
 Yes. The engagement model axis covers external clients, internal platform teams, programme cohorts with dated gates and evidence rules, and partner deliveries.
@@ -171,7 +194,7 @@ No. It is MIT-licensed and vendor-neutral. All examples use fictional companies.
 |---|---|
 | Name | Forward Deployed Engineering (FDE) skill and Claude Code plugin |
 | Plugin id | `fde@forward-deployed-engineering` |
-| Version | 1.2.0 (see [CHANGELOG](CHANGELOG.md)) |
+| Version | 1.3.0 (see [CHANGELOG](CHANGELOG.md)) |
 | Licence | MIT |
 | Author | [Jayzilva](https://github.com/Jayzilva) |
 | Repository | https://github.com/Jayzilva/FDE-forward-deployed-engineering-skill |

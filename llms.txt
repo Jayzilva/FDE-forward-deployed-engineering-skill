@@ -1,6 +1,6 @@
 # Forward Deployed Engineering (FDE) skill and Claude Code plugin
 
-> Free, MIT-licensed Claude Code plugin and agent skill for Forward Deployed Engineers. It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style) and produces the matching artifact, from discovery to a prototype with a guided spotlight tour to a handoff runbook.
+> Free, MIT-licensed Claude Code plugin and agent skill for Forward Deployed Engineers. It classifies an engagement on six axes (phase, environment, product, engagement model, starting point, delivery style) and produces the matching artifact, from discovery to a prototype with an FSPARK feedback tour to a handoff runbook.
 
 Install in Claude Code: `/plugin marketplace add Jayzilva/FDE-forward-deployed-engineering-skill` then `/plugin install fde@forward-deployed-engineering`.
 Skill-only install: upload `dist/forward-deployed-engineering.skill` to Claude.ai or Claude desktop.
@@ -9,18 +9,20 @@ Skill-only install: upload `dist/forward-deployed-engineering.skill` to Claude.a
 - [README](README.md): what FDE is, the six axes, the six phases, spotlight tours, install, FAQ
 - [Router skill](plugins/fde/skills/forward-deployed-engineering/SKILL.md): classification steps, artifact table, principles
 - [Situation matrix](plugins/fde/skills/forward-deployed-engineering/references/situation-matrix.md): what changes per environment, product, model and starting point
-- [Prototype phase and spotlight tours](plugins/fde/skills/forward-deployed-engineering/references/phase-3-prototype.md): build a separate version, add a spotlight tour, share by audience, close the feedback loop
+- [FSPARK feedback mechanism](plugins/fde/skills/forward-deployed-engineering/references/fspark.md): presentation, assessment, response, knowledge; sharing; closing the loop
+- [Prototype phase](plugins/fde/skills/forward-deployed-engineering/references/phase-3-prototype.md): build a separate version, add a spotlight tour, share by audience, close the feedback loop
 - [Engagement models](plugins/fde/skills/forward-deployed-engineering/references/engagement-models.md): external, internal, programme, partner
 - [Starting points](plugins/fde/skills/forward-deployed-engineering/references/starting-points.md): greenfield, prototype-exists, legacy-replace (strangler, parity gates), rescue, scale-out
 - [Delivery style](plugins/fde/skills/forward-deployed-engineering/references/delivery-style.md): requirement IDs, change-based tracking, AI cost
 - [Market research](plugins/fde/skills/forward-deployed-engineering/references/market-research.md): competitor profiles and gap matrices
 
 ## Tools
-- `scripts/add_spotlight.py`: adds a step-by-step spotlight tour with per-stop notes to any HTML prototype; output is one offline-safe file
+- `scripts/add_fspark.py`: adds FSPARK (Feedback-based Spotlight Presentation, Assessment, Response & Knowledge) to any HTML prototype: spotlight tour, a reaction and note per feature, Markdown feedback file
+- `scripts/merge_feedback.py`: merges FSPARK feedback files from many reviewers into one summary
 - `scripts/build_tour.py` and `scripts/capture_screens.py`: guided tour document from screenshots
 - `scripts/fde_state.py`: engagement state, gates and weekend check
 - `scripts/roi_calc.py`, `scripts/qualify.py`: ROI and use-case scoring
 
 ## Optional
-- [Example spotlight tour](examples/spotlight-demo/index.html): fictional field-service prototype
+- [FSPARK example](examples/fspark-demo/index.html): fictional field-service prototype with a feedback tour
 - [Changelog](CHANGELOG.md)

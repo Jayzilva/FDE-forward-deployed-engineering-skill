@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 — 2026-10-29
+
+- **FSPARK** (Feedback-based Spotlight Presentation, Assessment, Response & Knowledge) replaces the basic spotlight tour. Each stop asks for a reaction (looks right, needs changes, not needed, not sure) and a note. A review page shows totals and every stop. The tour builds a Markdown feedback file with preview, editor, download (Claude `downloads` capability or a direct download) and copy, ending in a team-response table.
+- Works in viewers that size the frame to the whole page: cards are placed in the visible part, and an optional `mount` adds an always-visible launch button.
+- `scripts/add_fspark.py` (old name `add_spotlight.py` still works) and `scripts/merge_feedback.py` to merge many reviewers' files.
+- `references/fspark.md`, `/fde:fspark` (old `/fde:spotlight` still works), `examples/fspark-demo/`. README FSPARK section and infographic.
+
 ## 1.2.0 — 2026-10-29
 
 - In-product spotlight tours: `scripts/add_spotlight.py` with `assets/spotlight/` adds a step-by-step guided tour to any HTML prototype. Each stop switches screen, highlights one feature, explains it and takes a viewer note. Notes copy back at the end. Output is one self-contained, offline-safe file.

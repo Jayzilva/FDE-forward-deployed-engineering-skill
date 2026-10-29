@@ -13,7 +13,7 @@
     <rect x="232" y="370" width="186" height="32" fill="#B5F23D"/>
     <text x="244" y="392" fill="#1C1D1F" font-size="15" font-weight="500">classify : then act</text>
     <line x1="60" y1="440" x2="1100" y2="440" stroke="#3A3D41"/>
-    <text x="60" y="474" fill="#8A8D91" font-size="13">Discovery · gap analysis · requirements · prototype + spotlight tour · pilot ROI · demo gate · handoff runbook</text>
+    <text x="60" y="474" fill="#8A8D91" font-size="13">Discovery · gap analysis · requirements · prototype + FSPARK feedback · pilot ROI · demo gate · handoff runbook</text>
     <line x1="860" y1="146" x2="860" y2="330" stroke="#EDEDED" stroke-width="1.5"/>
     <g font-size="30" fill="#EDEDED">
       <text x="880" y="178">6.00<tspan font-size="11" fill="#8A8D91" dx="6">axes</tspan></text>
@@ -21,7 +21,7 @@
       <text x="880" y="270">20.00<tspan font-size="11" fill="#8A8D91" dx="6">templates</tspan></text>
       <text x="880" y="316">17.00<tspan font-size="11" fill="#8A8D91" dx="6">commands</tspan></text>
     </g>
-    <text x="880" y="372" fill="#8A8D91" font-size="13">Version 1.2.0</text>
+    <text x="880" y="372" fill="#8A8D91" font-size="13">Version 1.3.0</text>
     <text x="880" y="390" fill="#8A8D91" font-size="13">Python 3.9+ · stdlib scripts</text>
   </g>
 </svg>

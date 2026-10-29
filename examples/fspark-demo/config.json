@@ -1,0 +1,63 @@
+{
+  "title": "Tell us what you think",
+  "kicker": "Acme Field Service · prototype v2",
+  "intro": "Six stops, about three minutes. Each stop shows one new feature. Pick a reaction and add a note. At the end you get a feedback file to send back. Every number is sample data.",
+  "storageKey": "acme-field-service-v2",
+  "autoStart": true,
+  "outro": "Edit anything you like, then download the file or copy the text and send it to your delivery lead.",
+  "steps": [
+    {
+      "screen": "overview",
+      "target": "[data-tour='kpis']",
+      "title": "Today at a glance",
+      "body": "First-time fix rate, jobs at risk of missing their SLA, and money ready to invoice, on one row.",
+      "tag": "OPS-01"
+    },
+    {
+      "screen": "overview",
+      "target": "[data-tour='assistant']",
+      "title": "Dispatch assistant",
+      "body": "Suggests the nearest qualified technician. A dispatcher accepts or changes every suggestion.",
+      "tag": "AI-02"
+    },
+    {
+      "screen": "jobs",
+      "target": "[data-tour='jobs']",
+      "title": "Jobs with live status",
+      "body": "Every job shows its technician and status. Suggested assignments wait for a person.",
+      "tag": "OPS-03"
+    },
+    {
+      "screen": "billing",
+      "target": "[data-tour='drafts']",
+      "title": "Invoice drafts",
+      "body": "Completed jobs become invoice drafts. A draft that needs a person says why.",
+      "tag": "FIN-05"
+    },
+    {
+      "screen": "billing",
+      "target": "[data-tour='portal']",
+      "title": "Customer view",
+      "body": "Customers see reports, photos and invoices, and sign off completed work.",
+      "tag": "POR-01"
+    },
+    {
+      "screen": "overview",
+      "target": "[data-tour='kpis']",
+      "title": "Your turn",
+      "body": "Which of these would you use every day? Pick a reaction, then press Review feedback.",
+      "tag": "Feedback"
+    }
+  ],
+  "product": "Acme Field Service prototype v2",
+  "version": "2",
+  "prototypeUrl": "https://github.com/Jayzilva/FDE-forward-deployed-engineering-skill/tree/main/examples/fspark-demo",
+  "fileName": "acme-v2-feedback",
+  "mount": "nav",
+  "stopQuestion": "Would your team use this?",
+  "questions": [
+    "What is missing that you need?",
+    "Overall, would this help your team? Why?"
+  ],
+  "launchLabel": "Tour and feedback"
+}
