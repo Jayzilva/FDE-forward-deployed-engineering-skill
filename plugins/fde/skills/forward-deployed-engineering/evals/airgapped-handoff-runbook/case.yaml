@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: airgapped-handoff-runbook
+expected_outcome: |
+  Classifies as Handoff / air-gapped / ai-agent. Produces a runbook in STE100 Strict style with
+  daily checks, start/stop, nightly ingest failure recovery, quarterly model update via signed
+  media with checksum verification, certificate and clock-drift checks, and contacts. Runs the
+  STE linter and reaches zero hard violations. Uses placeholders rather than invented hostnames.

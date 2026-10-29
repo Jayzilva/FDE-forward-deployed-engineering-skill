@@ -1,0 +1,298 @@
+<title>{{TITLE}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky bar with three views; tour = screen list | annotated screenshot | notes. Stacks on phones. */
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --sunk:#e9ebef; --ink:#151b26; --muted:#5a6372; --line:#d9dde4;
+  --feat:#0d6b63; --feat-ink:#ffffff; --feat-soft:#d7ece9;
+  --demo:#c2402f; --demo-soft:#f8dfdb; --next:#a06a00; --next-soft:#f5e8cc; --later:#5b6575; --later-soft:#e3e6eb;
+  --keep:#2f6b2a; --keep-soft:#dcebd8;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Public Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11151c; --surface:#181e27; --sunk:#202733; --ink:#e8ebf0; --muted:#9aa3b2; --line:#2c3441;
+  --feat:#3fb8a9; --feat-ink:#0b1512; --feat-soft:#173a36;
+  --demo:#f07a68; --demo-soft:#3d2320; --next:#e0ad4a; --next-soft:#3a2f16; --later:#a3acba; --later-soft:#272e39;
+  --keep:#83c77a; --keep-soft:#1e3320; color-scheme: dark}}
+:root[data-theme="dark"]{
+  --bg:#11151c; --surface:#181e27; --sunk:#202733; --ink:#e8ebf0; --muted:#9aa3b2; --line:#2c3441;
+  --feat:#3fb8a9; --feat-ink:#0b1512; --feat-soft:#173a36;
+  --demo:#f07a68; --demo-soft:#3d2320; --next:#e0ad4a; --next-soft:#3a2f16; --later:#a3acba; --later-soft:#272e39;
+  --keep:#83c77a; --keep-soft:#1e3320; color-scheme: dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1500px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--feat);outline-offset:2px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand h1{font-size:20px}
+.brand span{color:var(--muted);font-size:13px}
+.views{display:flex;gap:4px;background:var(--sunk);padding:4px;border-radius:10px}
+.views a{padding:6px 12px;border-radius:7px;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px}
+.views a[aria-current="page"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+
+/* intro */
+.intro{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;padding-block:24px 8px;align-items:start}
+.intro p{margin:6px 0 0;color:var(--muted);max-width:68ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:var(--muted);align-items:center}
+.legend .k{display:inline-flex;align-items:center;gap:6px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.stat b{display:block;font-family:var(--f-display);font-size:24px;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+
+/* chips */
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.pill.demo{background:var(--demo-soft);color:var(--demo)}
+.pill.next{background:var(--next-soft);color:var(--next)}
+.pill.later{background:var(--later-soft);color:var(--later)}
+.req{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.dot{width:22px;height:22px;border-radius:50%;background:var(--feat);color:var(--feat-ink);display:inline-grid;place-items:center;font-size:12px;font-weight:700;flex:none;font-variant-numeric:tabular-nums}
+
+/* tour layout */
+.tour{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;padding-block:16px 48px}
+.nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);align-self:start;display:flex;flex-direction:column;gap:14px}
+.nav h4{margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.nav a{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:14px}
+.nav a:hover{background:var(--sunk)}
+.nav a[aria-current="page"]{background:var(--feat-soft);color:var(--feat);font-weight:600}
+.nav a small{color:var(--demo);font-weight:600;font-variant-numeric:tabular-nums}
+.navselect{display:none}
+
+.screen-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:end;margin-bottom:14px}
+.screen-head .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);width:100%}
+.screen-head h2{font-size:30px}
+.roles{font-size:13px;color:var(--muted);background:var(--sunk);padding:3px 10px;border-radius:999px}
+.purpose{margin:0 0 16px;max-width:75ch}
+
+.stage{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);gap:20px;align-items:start}
+.shot{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sunk)}
+.shot-scroll{max-height:78vh;overflow-y:auto}
+.frame{position:relative}
+.frame img{display:block;width:100%;height:auto}
+.hs{position:absolute;border:2px solid transparent;border-radius:8px;transition:border-color .15s,background .15s;pointer-events:none}
+.hs.on{border-color:var(--feat);background:rgb(13 107 99 / .10)}
+.mk{position:absolute;transform:translate(-40%,-40%);pointer-events:auto;cursor:pointer;border:2px solid var(--surface);box-shadow:0 1px 4px rgb(0 0 0 / .35)}
+.mk.on{transform:translate(-40%,-40%) scale(1.25)}
+.hide-mk .mk,.hide-mk .hs{display:none}
+.shot-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;border-top:1px solid var(--line);background:var(--surface);font-size:13px;color:var(--muted)}
+.shot-tools label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+
+.notes{display:flex;flex-direction:column;gap:18px;min-width:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{font-size:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.feat-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.feat-list li{display:flex;gap:10px;padding:7px 8px;border-radius:8px;cursor:pointer}
+.feat-list li:hover,.feat-list li.on{background:var(--feat-soft)}
+.feat-list b{display:block;font-size:14px}
+.feat-list p{margin:0;font-size:13.5px;color:var(--muted)}
+.gap-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.gap-list li{border-left:3px solid var(--line);padding-left:10px}
+.gap-list li.demo{border-left-color:var(--demo)}
+.gap-list li.next{border-left-color:var(--next)}
+.gap-list li.later{border-left-color:var(--later)}
+.gap-list p{margin:3px 0;font-size:14px}
+.keep-list{margin:0;padding-left:18px;font-size:14px}
+.keep-list li::marker{color:var(--keep)}
+.card.keep{background:var(--keep-soft);border-color:transparent}
+.card.keep h3{color:var(--keep)}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:20px}
+.pager a{flex:1;max-width:48%;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px}
+.pager a span{display:block;font-size:12px;color:var(--muted)}
+.pager a.next{text-align:right;margin-left:auto}
+
+/* missing + gaps views */
+.view{padding-block:24px 48px}
+.view > p{color:var(--muted);max-width:75ch;margin:6px 0 20px}
+.miss-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.miss{background:var(--surface);border:1px dashed var(--muted);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.miss h3{font-size:18px}
+.miss p{margin:0;font-size:14px}
+.miss .ref{font-size:13px;color:var(--muted)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.filters button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:13px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+td a{color:var(--feat);font-weight:600;text-decoration:none}
+
+@media (max-width:1100px){.stage{grid-template-columns:minmax(0,1fr)}.shot-scroll{max-height:none}}
+@media (max-width:820px){
+  .tour{grid-template-columns:minmax(0,1fr)}
+  .nav{display:none}.navselect{display:block;width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+  .intro{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .screen-head h2{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="bar"><div class="wrap">
+  <div class="brand"><h1>{{TITLE}}</h1><span>{{SUBTITLE}}</span></div>
+  <nav class="views" aria-label="Views">
+    <a href="#overview" data-view="tour">Screen tour</a>
+    <a href="#missing" data-view="missing">Missing screens</a>
+    <a href="#gaps" data-view="gaps">All gaps</a>
+  </nav>
+</div></header>
+
+<main>
+  <section class="wrap intro">
+    <div>
+      <h2 style="font-size:24px">{{HEADLINE}}</h2>
+      <p>{{INTRO}}</p>
+      <div class="legend" style="margin-top:12px">
+        <span class="k"><span class="dot">1</span> feature on the screen</span>
+        <span class="k"><span class="pill demo">{{L_DEMO}}</span></span>
+        <span class="k"><span class="pill next">{{L_NEXT}}</span></span>
+        <span class="k"><span class="pill later">{{L_LATER}}</span></span>
+        <span class="k"><span class="req">FIN-03</span> requirement ID</span>
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section id="v-tour" class="wrap tour">
+    <aside class="nav" id="nav" aria-label="Screens"></aside>
+    <div style="min-width:0">
+      <select class="navselect" id="navselect" aria-label="Choose a screen"></select>
+      <div id="screen"></div>
+    </div>
+  </section>
+
+  <section id="v-missing" class="wrap view" hidden>
+    <h2>Screens the mock does not have yet</h2>
+    <p>{{MISSING_INTRO}}</p>
+    <div class="miss-grid" id="missgrid"></div>
+  </section>
+
+  <section id="v-gaps" class="wrap view" hidden>
+    <h2>All gaps in one list</h2>
+    <p>Every gap from the tour and the missing screens. Filter by when it should be fixed. Click a screen name to jump to it.</p>
+    <div class="filters" id="filters"></div>
+    <div class="tbl-wrap"><table><thead><tr><th>When</th><th>Screen</th><th>Gap</th><th>Requirement</th></tr></thead><tbody id="gaprows"></tbody></table></div>
+  </section>
+</main>
+
+<script>
+/*DATA*/
+const slug = n => n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+SCREENS.forEach(s => s.slug = slug(s.name));
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $ = id => document.getElementById(id);
+
+/* stats */
+const allGaps = SCREENS.flatMap(s => s.gaps.map(g => ({...g, screen:s.name, slug:s.slug})))
+  .concat(MISSING.map(m => ({level:m.level, text:m.name + ': ' + m.text, req:m.req, screen:'Missing screen', slug:'missing'})));
+$('stats').innerHTML = [
+  [SCREENS.length, 'screens explained'],
+  [SCREENS.reduce((a,s)=>a+s.spots.length,0), 'features marked'],
+  [allGaps.filter(g=>g.level==='demo').length, 'gaps: '+LEVELS.demo.toLowerCase()],
+  [MISSING.length, 'screens missing'],
+].map(([n,l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('');
+
+/* nav */
+const groups = [...new Set(SCREENS.map(s => s.group))];
+$('nav').innerHTML = groups.map(g => `<div><h4>${esc(g)}</h4>${SCREENS.filter(s=>s.group===g).map(s =>
+  `<a href="#${s.slug}" data-slug="${s.slug}">${esc(s.name)}${s.gaps.some(x=>x.level==='demo')?`<small title="gaps before client demo">${s.gaps.filter(x=>x.level==='demo').length}</small>`:''}</a>`).join('')}</div>`).join('');
+$('navselect').innerHTML = SCREENS.map(s => `<option value="${s.slug}">${esc(s.group)} · ${esc(s.name)}</option>`).join('');
+$('navselect').addEventListener('change', e => { location.hash = e.target.value; });
+
+let showMarkers = true;
+try { showMarkers = localStorage.getItem('tour-markers') !== '0'; } catch(e) {}
+
+function renderScreen(s){
+  const i = SCREENS.indexOf(s), prev = SCREENS[i-1], next = SCREENS[i+1];
+  const spots = s.spots.map(p => `<div class="hs" data-n="${p.n}" style="left:${p.x}%;top:${p.y}%;width:${p.w}%;height:${p.h}%"></div>
+    <button class="dot mk" data-n="${p.n}" style="left:${p.x}%;top:${p.y}%" aria-label="${p.n}. ${esc(p.label)}">${p.n}</button>`).join('');
+  $('screen').innerHTML = `
+  <div class="screen-head"><div class="eyebrow">${esc(s.group)} · screen ${i+1} of ${SCREENS.length}</div><h2>${esc(s.name)}</h2><span class="roles">Used by: ${esc(s.roles)}</span></div>
+  <p class="purpose">${esc(s.purpose)}</p>
+  <div class="stage">
+    <div class="shot ${showMarkers?'':'hide-mk'}" id="shot">
+      <div class="shot-scroll"><div class="frame"><img src="${s.img}" alt="Screenshot of the ${esc(s.name)} screen" width="1440" style="aspect-ratio:1/${s.ratio}">${spots}</div></div>
+      <div class="shot-tools"><span>Click a number or a row to highlight it</span><label><input type="checkbox" id="mktoggle" ${showMarkers?'checked':''}> Show numbers</label></div>
+    </div>
+    <div class="notes">
+      <div class="card"><h3>What you can do here</h3><ol class="feat-list">${s.spots.map(p =>
+        `<li data-n="${p.n}" tabindex="0"><span class="dot">${p.n}</span><div><b>${esc(p.label)}</b><p>${esc(p.desc)}</p></div></li>`).join('')}</ol></div>
+      <div class="card"><h3>Gaps on this screen <span class="req">${s.gaps.length}</span></h3><ul class="gap-list">${s.gaps.map(g =>
+        `<li class="${g.level}"><span class="pill ${g.level}">${LEVELS[g.level]}</span><p>${esc(g.text)}</p><span class="req">${esc(g.req)}</span></li>`).join('')}</ul></div>
+      ${s.keep.length?`<div class="card keep"><h3>Keep this</h3><ul class="keep-list">${s.keep.map(k=>`<li>${esc(k)}</li>`).join('')}</ul></div>`:''}
+    </div>
+  </div>
+  <div class="pager">${prev?`<a href="#${prev.slug}"><span>Previous</span>${esc(prev.name)}</a>`:''}${next?`<a class="next" href="#${next.slug}"><span>Next</span>${esc(next.name)}</a>`:`<a class="next" href="#missing"><span>Next</span>Missing screens</a>`}</div>`;
+
+  const pick = n => {
+    document.querySelectorAll('#screen [data-n]').forEach(el => el.classList.toggle('on', el.dataset.n === String(n)));
+  };
+  $('screen').querySelectorAll('.mk').forEach(b => b.addEventListener('click', () => {
+    pick(b.dataset.n);
+    const li = $('screen').querySelector(`li[data-n="${b.dataset.n}"]`);
+    if (li) li.scrollIntoView({block:'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }));
+  $('screen').querySelectorAll('.feat-list li').forEach(li => {
+    const go = () => {
+      pick(li.dataset.n);
+      const hs = $('screen').querySelector(`.hs[data-n="${li.dataset.n}"]`), sc = $('screen').querySelector('.shot-scroll');
+      if (hs && sc && sc.scrollHeight > sc.clientHeight) sc.scrollTo({top: Math.max(0, hs.offsetTop - 80), behavior:'smooth'});
+    };
+    li.addEventListener('click', go); li.addEventListener('mouseenter', () => pick(li.dataset.n));
+    li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
+  $('mktoggle').addEventListener('change', e => {
+    showMarkers = e.target.checked; $('shot').classList.toggle('hide-mk', !showMarkers);
+    try { localStorage.setItem('tour-markers', showMarkers ? '1' : '0'); } catch(err) {}
+  });
+}
+
+/* missing */
+$('missgrid').innerHTML = MISSING.map(m => `<article class="miss"><span><span class="pill ${m.level}">${LEVELS[m.level]}</span></span><h3>${esc(m.name)}</h3><p>${esc(m.text)}</p><p class="ref">Done well today by: ${esc(m.ref)}</p><span class="req">${esc(m.req)}</span></article>`).join('');
+
+/* all gaps */
+let filter = 'all';
+function renderGaps(){
+  $('filters').innerHTML = [['all','All',allGaps.length]].concat(Object.entries(LEVELS).map(([k,v]) => [k, v, allGaps.filter(g=>g.level===k).length]))
+    .map(([k,v,n]) => `<button type="button" data-f="${k}" aria-pressed="${filter===k}">${esc(v)} · ${n}</button>`).join('');
+  $('filters').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { filter = b.dataset.f; renderGaps(); }));
+  const order = {demo:0,next:1,later:2};
+  $('gaprows').innerHTML = allGaps.filter(g => filter==='all' || g.level===filter).sort((a,b)=>order[a.level]-order[b.level])
+    .map(g => `<tr><td><span class="pill ${g.level}">${LEVELS[g.level]}</span></td><td><a href="#${g.slug}">${esc(g.screen)}</a></td><td>${esc(g.text)}</td><td class="req">${esc(g.req)}</td></tr>`).join('');
+}
+renderGaps();
+
+/* routing */
+function route(){
+  const h = location.hash.slice(1) || SCREENS[0].slug;
+  const view = h === 'missing' ? 'missing' : h === 'gaps' ? 'gaps' : 'tour';
+  $('v-tour').hidden = view !== 'tour'; $('v-missing').hidden = view !== 'missing'; $('v-gaps').hidden = view !== 'gaps';
+  document.querySelectorAll('.views a').forEach(a => { if (a.dataset.view === view) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  if (view === 'tour') {
+    const s = SCREENS.find(x => x.slug === h) || SCREENS[0];
+    renderScreen(s);
+    document.querySelectorAll('#nav a').forEach(a => { if (a.dataset.slug === s.slug) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+    $('navselect').value = s.slug;
+    document.querySelector('.views a[data-view="tour"]').href = '#' + s.slug;
+  }
+  window.scrollTo({top: 0});
+}
+window.addEventListener('hashchange', route);
+route();
+</script>

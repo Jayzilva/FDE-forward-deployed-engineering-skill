@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: internal-legacy-replace-prototype
+expected_outcome: |
+  Classifies the work as Discover or Scope / cloud / business-app, with model internal,
+  start legacy-replace (and prototype-exists), style spec-driven. Recommends running the
+  existing mock before writing requirements and building any new mock as a separate version.
+  Proposes a domain-by-domain (strangler) migration with a system of record per domain and a
+  parity gate, and keeps the legacy system's strengths as requirements. Marks the unknown
+  accounting system as an open question instead of assuming one.

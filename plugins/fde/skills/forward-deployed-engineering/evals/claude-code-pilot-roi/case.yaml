@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: claude-code-pilot-roi
+expected_outcome: |
+  Classifies as Validate / cloud (assumed) / claude-code. Runs or reproduces the ROI script with
+  the given numbers, labels the gain structural (team size halved, elapsed time cut), presents a
+  conservative case first, and produces an ROI scorecard with a BLUF narrative and caveats about
+  sample size (3 services) and measurement method.

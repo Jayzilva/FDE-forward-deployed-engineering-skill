@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: bank-kyc-agent-discovery
+expected_outcome: |
+  Classifies the situation as Discover / regulated / ai-agent. Produces a site survey and a
+  discovery question set tailored to the bank. Questions the "chatbot" framing and probes the
+  underlying task. Pulls security review, data residency, and model-vendor approval into week 1.
+  Asks for a golden dataset of real KYC cases. Marks unknowns as TBD rather than inventing facts.

@@ -1,0 +1,10 @@
+{
+  "name": "fde",
+  "version": "1.0.0",
+  "description": "Forward Deployed Engineering field kit: a router skill that classifies each engagement on six axes, 18 artifact templates, prototype capture and guided-tour builder, ROI and use-case scoring, engagement state with gate calendar, STE linting, and reviewer and research agents.",
+  "author": { "name": "Jayzilva", "url": "https://github.com/Jayzilva" },
+  "homepage": "https://github.com/Jayzilva/FDE-forward-deployed-engineering-skill",
+  "repository": "https://github.com/Jayzilva/FDE-forward-deployed-engineering-skill",
+  "license": "MIT",
+  "keywords": ["fde", "forward-deployed-engineering", "delivery", "prototype", "gap-analysis", "pilot", "roi", "handoff", "legacy-migration", "spec-driven", "mcp", "claude-code"]
+}
